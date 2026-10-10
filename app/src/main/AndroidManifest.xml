@@ -59,6 +59,12 @@
             android:exported="false">
         </activity>
         <activity
+            android:name="com.program.Body_activity"
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:exported="false">
+        </activity>
+        <activity
             android:name="com.program.UserSettingActivity"
             android:screenOrientation="landscape"
             android:exported="false">

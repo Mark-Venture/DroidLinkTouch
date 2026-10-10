@@ -2995,6 +2995,156 @@
             </PreferenceScreen>
         </PreferenceScreen>
 
+        <PreferenceScreen
+            android:key="setB"
+            android:persistent="false"
+            android:title="Body Panels &amp; Drawers Screen" >
+            <PreferenceScreen android:title="BODY DOORS (6)" >
+                <PreferenceCategory android:title="DOOR 1 (Upper Left)" >
+                    <EditTextPreference
+                        android:defaultValue="UL Door (UT)"
+                        android:key="door1_name"
+                        android:title="NAME" />
+                    <EditTextPreference
+                        android:defaultValue=":BS7T"
+                        android:key="door1_cmd"
+                        android:title="ACTION" />
+                </PreferenceCategory>
+                <PreferenceCategory android:title="DOOR 2 (Upper Right)" >
+                    <EditTextPreference
+                        android:defaultValue="UR Door (UT)"
+                        android:key="door2_name"
+                        android:title="NAME" />
+                    <EditTextPreference
+                        android:defaultValue=":BS8T"
+                        android:key="door2_cmd"
+                        android:title="ACTION" />
+                </PreferenceCategory>
+                <PreferenceCategory android:title="DOOR 3 (Center Up)" >
+                    <EditTextPreference
+                        android:defaultValue="Center Up Door"
+                        android:key="door3_name"
+                        android:title="NAME" />
+                    <EditTextPreference
+                        android:defaultValue=":BS03"
+                        android:key="door3_cmd"
+                        android:title="ACTION" />
+                </PreferenceCategory>
+                <PreferenceCategory android:title="DOOR 4 (Center Low)" >
+                    <EditTextPreference
+                        android:defaultValue="Center Low Door"
+                        android:key="door4_name"
+                        android:title="NAME" />
+                    <EditTextPreference
+                        android:defaultValue=":BS04"
+                        android:key="door4_cmd"
+                        android:title="ACTION" />
+                </PreferenceCategory>
+                <PreferenceCategory android:title="DOOR 5 (Lower Left)" >
+                    <EditTextPreference
+                        android:defaultValue="LL Gripper Door"
+                        android:key="door5_name"
+                        android:title="NAME" />
+                    <EditTextPreference
+                        android:defaultValue=":BS05"
+                        android:key="door5_cmd"
+                        android:title="ACTION" />
+                </PreferenceCategory>
+                <PreferenceCategory android:title="DOOR 6 (Lower Right)" >
+                    <EditTextPreference
+                        android:defaultValue="LR Tool Door"
+                        android:key="door6_name"
+                        android:title="NAME" />
+                    <EditTextPreference
+                        android:defaultValue=":BS06"
+                        android:key="door6_cmd"
+                        android:title="ACTION" />
+                </PreferenceCategory>
+            </PreferenceScreen>
+            <PreferenceScreen android:title="BODY DRAWERS (8)" >
+                <PreferenceCategory android:title="DRAWER 1" >
+                    <EditTextPreference
+                        android:defaultValue="Drawer 1"
+                        android:key="drawer1_name"
+                        android:title="NAME" />
+                    <EditTextPreference
+                        android:defaultValue=":BS07"
+                        android:key="drawer1_cmd"
+                        android:title="ACTION" />
+                </PreferenceCategory>
+                <PreferenceCategory android:title="DRAWER 2" >
+                    <EditTextPreference
+                        android:defaultValue="Drawer 2"
+                        android:key="drawer2_name"
+                        android:title="NAME" />
+                    <EditTextPreference
+                        android:defaultValue=":BS08"
+                        android:key="drawer2_cmd"
+                        android:title="ACTION" />
+                </PreferenceCategory>
+                <PreferenceCategory android:title="DRAWER 3" >
+                    <EditTextPreference
+                        android:defaultValue="Drawer 3"
+                        android:key="drawer3_name"
+                        android:title="NAME" />
+                    <EditTextPreference
+                        android:defaultValue=":BS09"
+                        android:key="drawer3_cmd"
+                        android:title="ACTION" />
+                </PreferenceCategory>
+                <PreferenceCategory android:title="DRAWER 4" >
+                    <EditTextPreference
+                        android:defaultValue="Drawer 4"
+                        android:key="drawer4_name"
+                        android:title="NAME" />
+                    <EditTextPreference
+                        android:defaultValue=":BS10"
+                        android:key="drawer4_cmd"
+                        android:title="ACTION" />
+                </PreferenceCategory>
+                <PreferenceCategory android:title="DRAWER 5" >
+                    <EditTextPreference
+                        android:defaultValue="Drawer 5"
+                        android:key="drawer5_name"
+                        android:title="NAME" />
+                    <EditTextPreference
+                        android:defaultValue=":BS11"
+                        android:key="drawer5_cmd"
+                        android:title="ACTION" />
+                </PreferenceCategory>
+                <PreferenceCategory android:title="DRAWER 6" >
+                    <EditTextPreference
+                        android:defaultValue="Drawer 6"
+                        android:key="drawer6_name"
+                        android:title="NAME" />
+                    <EditTextPreference
+                        android:defaultValue=":BS12"
+                        android:key="drawer6_cmd"
+                        android:title="ACTION" />
+                </PreferenceCategory>
+                <PreferenceCategory android:title="DRAWER 7" >
+                    <EditTextPreference
+                        android:defaultValue="Drawer 7"
+                        android:key="drawer7_name"
+                        android:title="NAME" />
+                    <EditTextPreference
+                        android:defaultValue=":BS13"
+                        android:key="drawer7_cmd"
+                        android:title="ACTION" />
+                </PreferenceCategory>
+                <PreferenceCategory android:title="DRAWER 8" >
+                    <EditTextPreference
+                        android:defaultValue="Drawer 8"
+                        android:key="drawer8_name"
+                        android:title="NAME" />
+                    <EditTextPreference
+                        android:defaultValue=":BS14"
+                        android:key="drawer8_cmd"
+                        android:title="ACTION" />
+                </PreferenceCategory>
+            </PreferenceScreen>
+        </PreferenceScreen>
+
         <com.program.ResetDefDiagPref
             android:dialogMessage="Revert all values to their defaults?"
             android:key="resetDialog"

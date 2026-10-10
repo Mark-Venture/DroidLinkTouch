@@ -30,6 +30,21 @@
             android:layout_marginTop="10dp"
             android:visibility="visible" />
 
+        <Button
+            android:id="@+id/button_body_panels"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/default_button_image"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:text="BODY PANELS"
+            android:textColor="#f6b93f"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:onClick="handleButtonClick" />
+
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/pagerSoundAct"
             android:layout_width="fill_parent"

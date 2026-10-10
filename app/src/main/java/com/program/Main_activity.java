@@ -1439,6 +1439,12 @@ public class Main_activity extends Activity implements View.OnTouchListener {
 				startActivity(nextScreen);
 			} // Sound
 
+			if (ct.closeMatch(Color.argb(255, 0, 255, 255), touchColor, tolerance)) {
+				Intent nextScreenBody = new Intent(getApplicationContext(),
+						Body_activity.class);
+				startActivity(nextScreenBody);
+			} // Body Panels
+
 			// If the next image is the same as the last image, go back to the
 			// default.
 			// toast ("Current image: " + currentResource + " next: " +
@@ -3587,6 +3593,12 @@ public class Main_activity extends Activity implements View.OnTouchListener {
 					"169.254.1.1");
 			Main_activity.ip_port = Integer.parseInt(prefs.getString(
 					"prefUserPort", "2000"));
+			break;
+
+		case R.id.button_body_panels:
+			Intent nextScreenBody = new Intent(Main_activity.this,
+					Body_activity.class);
+			startActivity(nextScreenBody);
 			break;
 		default:
 			break;

@@ -65,6 +65,19 @@ public class DroidLinkSync {
                             String cmd = item.optString("c", "");
                             editor.putString("mk" + keyNum + "_name", label);
                             editor.putString("mk" + keyNum, cmd);
+
+                            // Map first 6 body buttons to Doors 1-6
+                            if (i < 6) {
+                                editor.putString("door" + (i + 1) + "_name", label);
+                                editor.putString("door" + (i + 1) + "_cmd", cmd);
+                            }
+                            // Map next 8 body buttons (7-14) to Drawers 1-8
+                            else if (i < 14) {
+                                int drawerNum = (i - 6) + 1;
+                                editor.putString("drawer" + drawerNum + "_name", label);
+                                editor.putString("drawer" + drawerNum + "_cmd", cmd);
+                            }
+
                             bodyCount++;
                         }
                     }

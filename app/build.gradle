@@ -1,18 +1,28 @@
-apply plugin: 'com.android.application'
+plugins {
+    id 'com.android.application'
+}
 
 android {
-    compileSdkVersion 33
+    namespace 'com.program.r2_touch_android'
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.program.r2_touch_android"
-        minSdkVersion 14
-        targetSdkVersion 33
+        minSdk 21
+        targetSdk 34
+        versionCode 8
+        versionName "1.5"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt')
             signingConfig signingConfigs.debug
         }
         debug {
@@ -25,4 +35,16 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'androidx.gridlayout:gridlayout:1.0.0'
     implementation 'com.squareup.picasso:picasso:2.5.2'
+}
+
+tasks.register('copyApks', Copy) {
+    from "${layout.buildDirectory.get()}/outputs/apk"
+    into "${rootDir}/build_output"
+    include "**/*.apk"
+}
+
+afterEvaluate {
+    tasks.matching { it.name.startsWith('assemble') }.configureEach {
+        finalizedBy 'copyApks'
+    }
 }

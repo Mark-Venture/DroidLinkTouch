@@ -3598,25 +3598,34 @@ public class Sound_activity2 extends Activity {
 
 	public void playAudioThroughAppFunction(final String thisSoundNumber) {
 		if (playAudioOnApp == true) {
-			//Following code is for playing audio file through app/bluetooth
-			String tempstring = "" + Environment.getExternalStorageDirectory().getPath() + "/R2TouchAudio/";
-			File dir = new File(tempstring);
-			Boolean resulltSound = dir.isDirectory();
-			// list the files using a anonymous FileFilter
-			File[] audioFiles = dir.listFiles(new FileFilter() {
-				@Override
-				public boolean accept(File file) {
-					return file.getName().startsWith(thisSoundNumber);
+			// Search candidate directories for R2TouchAudio
+			File[] candidateDirs = new File[] {
+				new File(getApplicationContext().getExternalFilesDir(null), "R2TouchAudio"),
+				new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC), "R2TouchAudio"),
+				new File(Environment.getExternalStorageDirectory(), "R2TouchAudio")
+			};
+
+			File foundAudioFile = null;
+			for (File dir : candidateDirs) {
+				if (dir != null && dir.exists() && dir.isDirectory()) {
+					File[] audioFiles = dir.listFiles(new FileFilter() {
+						@Override
+						public boolean accept(File file) {
+							return file.getName().startsWith(thisSoundNumber);
+						}
+					});
+					if (audioFiles != null && audioFiles.length > 0) {
+						foundAudioFile = audioFiles[0];
+						break;
+					}
 				}
-			});
-			if (audioFiles != null) {
-				if (audioFiles.length == 0) return;
+			}
+
+			if (foundAudioFile != null) {
 				mediaPlayer.reset();
-				String audiostring = audioFiles[0].getName();
-				//MediaPlayer mediaPlayer = new MediaPlayer();
 				mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
 				try {
-					mediaPlayer.setDataSource(getApplicationContext(), Uri.parse(Environment.getExternalStorageDirectory().getPath() + "/R2TouchAudio/" + audiostring));
+					mediaPlayer.setDataSource(getApplicationContext(), Uri.fromFile(foundAudioFile));
 					mediaPlayer.prepareAsync();
 				} catch (IllegalArgumentException e) {
 					// TODO Auto-generated catch block

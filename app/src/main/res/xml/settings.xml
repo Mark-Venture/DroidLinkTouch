@@ -1,23 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
 
-    <PreferenceCategory android:title="Wifi Receiver Settings" >
+    <PreferenceCategory android:title="DroidLink Settings" >
         <EditTextPreference
-            android:defaultValue="169.254.1.1"
+            android:defaultValue="192.168.4.1"
             android:key="prefUserAddress"
-            android:title="Receiver IP Address" />
+            android:title="DroidLink IP Address" />
         <EditTextPreference
-            android:defaultValue="2000"
+            android:defaultValue="80"
             android:key="prefUserPort"
             android:title="Receiver Port Number" />
-    </PreferenceCategory>
-    <PreferenceCategory android:title="Connection Option" >
         <ListPreference
-            android:defaultValue="3"
+            android:defaultValue="5"
             android:entries="@array/connection_options"
             android:entryValues="@array/connection_options_values"
             android:key="connectionType"
             android:title="Connection Type" />
+        <Preference
+            android:key="syncDroidLinkPref"
+            android:title="Sync Buttons from DroidLink"
+            android:summary="Download button labels and commands directly from http://192.168.4.1/load" />
     </PreferenceCategory>
     <PreferenceCategory android:title="Play Sounds on App" >
         <CheckBoxPreference 

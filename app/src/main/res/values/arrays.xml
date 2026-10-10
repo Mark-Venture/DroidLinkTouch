@@ -13,15 +13,17 @@
         <item name="0">0</item>
     </string-array>
     <string-array name="connection_options">
-        <item name="sbp">Serial via Built-in Port (Future Update)</item>
-        <item name="sap">Serial via Audio Port (Future Update)</item>
+        <item name="dlw">DroidLink Web (HTTP)</item>
         <item name="wtp">TCP over WiFi</item>
         <item name="wup">UDP over WiFi</item>
+        <item name="sbp">Serial via Built-in Port</item>
+        <item name="sap">Serial via Audio Port</item>
     </string-array>
     <string-array name="connection_options_values">
-        <item name="sbpv">1</item>
-        <item name="sapv">2</item>
+        <item name="dlwv">5</item>
         <item name="wtpv">3</item>
         <item name="wupv">4</item>
+        <item name="sbpv">1</item>
+        <item name="sapv">2</item>
     </string-array>
 </resources>

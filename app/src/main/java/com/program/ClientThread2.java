@@ -45,7 +45,10 @@ public class ClientThread2 implements Runnable {
         //DatagramSocket client_socket = null;
         
         int connection = Main_activity.connection;
-
+        if (connection == 5) {
+            Main_activity.sendstring(send_to_ard);
+            return;
+        }
     	if (connection == 3) {
         	OutputStream outStream = null;
         	try {

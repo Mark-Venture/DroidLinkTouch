@@ -64,8 +64,11 @@ import java.io.OutputStream;
 import java.lang.ref.WeakReference;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
+import java.net.HttpURLConnection;
 import java.net.InetAddress;
 import java.net.Socket;
+import java.net.URL;
+import java.net.URLEncoder;
 import java.net.UnknownHostException;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -401,11 +404,11 @@ public class Main_activity extends Activity implements View.OnTouchListener {
 
 		// Initializes the ip address and port, and connects to it on startup
 		Main_activity.ip_address = prefs.getString("prefUserAddress",
-				"169.254.1.1");
+				"192.168.4.1");
 		Main_activity.ip_port = Integer.parseInt(prefs.getString(
-				"prefUserPort", "2000"));
+				"prefUserPort", "80"));
 		Main_activity.connection = Integer.parseInt(prefs.getString(
-				"connectionType", "3"));
+				"connectionType", "5"));
 		Main_activity.main1 = prefs.getString("main_button1", "Error");
 
 		/*
@@ -517,6 +520,70 @@ public class Main_activity extends Activity implements View.OnTouchListener {
 		Button btn22S = (Button) findViewById(R.id.buttons22S);
 		Button btn23S = (Button) findViewById(R.id.buttons23S);
 		Button btn24S = (Button) findViewById(R.id.buttons24S);
+
+		if (connection == 5) {
+			DroidLinkSync.syncFromDevice(this, ip_address, new DroidLinkSync.SyncCallback() {
+				@Override
+				public void onSuccess(final String summary) {
+					runOnUiThread(new Runnable() {
+						@Override
+						public void run() {
+							SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(Main_activity.this);
+							Button b1 = (Button) findViewById(R.id.buttons1);
+							if (b1 != null) b1.setText(p.getString("mk1_name", "CloseD"));
+							Button b2 = (Button) findViewById(R.id.buttons2);
+							if (b2 != null) b2.setText(p.getString("mk2_name", "CloseD"));
+							Button b3 = (Button) findViewById(R.id.buttons3);
+							if (b3 != null) b3.setText(p.getString("mk3_name", "CloseD"));
+							Button b4 = (Button) findViewById(R.id.buttons4);
+							if (b4 != null) b4.setText(p.getString("mk4_name", "CloseD"));
+							Button b5 = (Button) findViewById(R.id.buttons5);
+							if (b5 != null) b5.setText(p.getString("mk5_name", "CloseD"));
+							Button b6 = (Button) findViewById(R.id.buttons6);
+							if (b6 != null) b6.setText(p.getString("mk6_name", "CloseD"));
+							Button b7 = (Button) findViewById(R.id.buttons7);
+							if (b7 != null) b7.setText(p.getString("mk7_name", "CloseD"));
+							Button b8 = (Button) findViewById(R.id.buttons8);
+							if (b8 != null) b8.setText(p.getString("mk8_name", "CloseD"));
+							Button b9 = (Button) findViewById(R.id.buttons9);
+							if (b9 != null) b9.setText(p.getString("mk9_name", "CloseD"));
+							Button b10 = (Button) findViewById(R.id.buttons10);
+							if (b10 != null) b10.setText(p.getString("mk10_name", "CloseD"));
+							Button b11 = (Button) findViewById(R.id.buttons11);
+							if (b11 != null) b11.setText(p.getString("mk11_name", "CloseD"));
+							Button b13 = (Button) findViewById(R.id.buttons13);
+							if (b13 != null) b13.setText(p.getString("mk12_name", "CloseD"));
+							Button b14 = (Button) findViewById(R.id.buttons14);
+							if (b14 != null) b14.setText(p.getString("mk13_name", "CloseD"));
+							Button b15 = (Button) findViewById(R.id.buttons15);
+							if (b15 != null) b15.setText(p.getString("mk14_name", "CloseD"));
+							Button b16 = (Button) findViewById(R.id.buttons16);
+							if (b16 != null) b16.setText(p.getString("mk15_name", "CloseD"));
+							Button b17 = (Button) findViewById(R.id.buttons17);
+							if (b17 != null) b17.setText(p.getString("mk16_name", "CloseD"));
+							Button b18 = (Button) findViewById(R.id.buttons18);
+							if (b18 != null) b18.setText(p.getString("mk17_name", "CloseD"));
+							Button b19 = (Button) findViewById(R.id.buttons19);
+							if (b19 != null) b19.setText(p.getString("mk18_name", "CloseD"));
+							Button b20 = (Button) findViewById(R.id.buttons20);
+							if (b20 != null) b20.setText(p.getString("mk19_name", "CloseD"));
+							Button b21 = (Button) findViewById(R.id.buttons21);
+							if (b21 != null) b21.setText(p.getString("mk20_name", "CloseD"));
+							Button b22 = (Button) findViewById(R.id.buttons22);
+							if (b22 != null) b22.setText(p.getString("mk21_name", "CloseD"));
+							Button b23 = (Button) findViewById(R.id.buttons23);
+							if (b23 != null) b23.setText(p.getString("mk22_name", "CloseD"));
+							Toast.makeText(Main_activity.this, "Synced with DroidLink controller!", Toast.LENGTH_SHORT).show();
+						}
+					});
+				}
+
+				@Override
+				public void onError(String errorMessage) {
+					// Offline / away from droid
+				}
+			});
+		}
 
 		switch (Main_activity.sound_screen) {
 		case 1: // General
@@ -1662,9 +1729,11 @@ public class Main_activity extends Activity implements View.OnTouchListener {
 				.getDefaultSharedPreferences(this);
 
 		Main_activity.ip_address = prefs.getString("prefUserAddress",
-				"169.254.1.1");
+				"192.168.4.1");
 		Main_activity.ip_port = Integer.parseInt(prefs.getString(
-				"prefUserPort", "2000"));
+				"prefUserPort", "80"));
+		Main_activity.connection = Integer.parseInt(prefs.getString(
+				"connectionType", "5"));
 
 		//networkThread = new Thread(new ClientThread());
 		//networkThread.start();
@@ -3673,7 +3742,10 @@ public class Main_activity extends Activity implements View.OnTouchListener {
 					driver = UsbSerialProber.findFirstDevice(manager);
 				}
 				*/
-				if (connection == 3) {
+				if (connection == 5) {
+					// DroidLink Web (HTTP) mode
+					wifiSymbol.scheduleAtFixedRate(wifiTask, 0, 1000);
+				} else if (connection == 3) {
 					InetAddress serverAddr = InetAddress.getByName(ip_address);
 					socket = new Socket(serverAddr, ip_port);
 					if (socket.isConnected() == true) {
@@ -3695,25 +3767,43 @@ public class Main_activity extends Activity implements View.OnTouchListener {
 
 	public static void sendstring(String send_to_ard) {
 		String message = send_to_ard;
+		if (message == null) return;
+		final String trimmedMessage = message.trim();
+		if (trimmedMessage.isEmpty()) return;
+
 		Main_activity.test = message;
-		// Converts to bytes and sends the text command to the Marcduino
+
+		if (connection == 5) {
+			// DroidLink Web HTTP mode: sends command to http://<ip_address>/cmd?c=<COMMAND>
+			new Thread(new Runnable() {
+				@Override
+				public void run() {
+					HttpURLConnection conn = null;
+					try {
+						String encodedCmd = URLEncoder.encode(trimmedMessage, "UTF-8");
+						String urlStr = "http://" + ip_address + "/cmd?c=" + encodedCmd;
+						URL url = new URL(urlStr);
+						conn = (HttpURLConnection) url.openConnection();
+						conn.setRequestMethod("GET");
+						conn.setConnectTimeout(2500);
+						conn.setReadTimeout(2500);
+						conn.getResponseCode();
+					} catch (Exception e) {
+						e.printStackTrace();
+					} finally {
+						if (conn != null) {
+							conn.disconnect();
+						}
+					}
+				}
+			}).start();
+			return;
+		}
+
 		final byte[] msgBuffer = message.getBytes();
 		if (connection == 4) {
 			udpMessage = message;
 			new Thread(new ClientUDP()).start();
-			//try {
-				//InetAddress IPAddress = InetAddress.getByName(ip_address);
-				//DatagramPacket send_packet = new DatagramPacket(msgBuffer,
-						//send_to_ard.length(), IPAddress, ip_port);
-				//client_socket.
-				//client_socket.send(send_packet);
-				//client_socket.close();
-				
-			//} catch (IOException e) {
-
-			//} finally {
-			//.close();
-			//}
 		}
 		if (connection == 3) {
 			Thread send_command = new Thread() {
@@ -3721,13 +3811,6 @@ public class Main_activity extends Activity implements View.OnTouchListener {
 					OutputStream outStream = null;
 					try {
 						outStream = socket.getOutputStream();
-					} catch (IOException e) {
-						e.printStackTrace();
-					} catch (NullPointerException e) {
-						// Todo
-					}
-
-					try {
 						outStream.write(msgBuffer);
 					} catch (IOException e) {
 						e.printStackTrace();

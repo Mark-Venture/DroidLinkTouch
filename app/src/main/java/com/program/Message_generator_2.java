@@ -52,6 +52,10 @@ public class Message_generator_2{
 	            //DatagramSocket client_socket = null;
 	            
 	            int connection = Main_activity.connection;
+	            if (connection == 5) {
+	                Main_activity.sendstring(send_to_ard);
+	                return;
+	            }
 	        	/*if (connection == 4) {
 	        		try {
 	        			client_socket = new DatagramSocket(Main_activity.ip_port);
@@ -97,6 +101,10 @@ public class Message_generator_2{
             //DatagramSocket client_socket = null;
             
             int connection = Main_activity.connection;
+            if (connection == 5) {
+                Main_activity.sendstring(message);
+                return null;
+            }
         	/*if (connection == 4) {
         		try {
         			client_socket = new DatagramSocket(Main_activity.ip_port);

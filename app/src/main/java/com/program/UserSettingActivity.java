@@ -36,26 +36,61 @@ public class UserSettingActivity extends PreferenceActivity implements OnSharedP
         //Store the Intent that started this Activity at this.startIntent.  
         this.startIntent = getIntent(); 
         
-        //Set the OnPreferenceChangeListener for the resetDialogPreference  
-        this.resetDialogPreference.setOnPreferenceChangeListener(new OnPreferenceChangeListener()   
-        {  
-            @Override  
-            public boolean onPreferenceChange(Preference preference, Object newValue)   
+        if (this.resetDialogPreference != null) {
+            this.resetDialogPreference.setOnPreferenceChangeListener(new OnPreferenceChangeListener()   
             {  
-                //Both enter and exit animations are set to zero, so no transition animation is applied  
-                overridePendingTransition(0, 0);  
-                //Call this line, just to make sure that the system doesn't apply an animation  
-                startIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);  
-                //Close this Activity  
-                finish();  
-                //Again, don't set an animation for the transition  
-                overridePendingTransition(0, 0);  
-                //Start the activity by calling the Intent that have started this same Activity  
-                startActivity(startIntent);  
-                //Return false, so that nothing happens to the preference values  
-                return false;  
-            }  
-        });  
+                @Override  
+                public boolean onPreferenceChange(Preference preference, Object newValue)   
+                {  
+                    //Both enter and exit animations are set to zero, so no transition animation is applied  
+                    overridePendingTransition(0, 0);  
+                    //Call this line, just to make sure that the system doesn't apply an animation  
+                    startIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);  
+                    //Close this Activity  
+                    finish();  
+                    //Again, don't set an animation for the transition  
+                    overridePendingTransition(0, 0);  
+                    //Start the activity by calling the Intent that have started this same Activity  
+                    startActivity(startIntent);  
+                    //Return false, so that nothing happens to the preference values  
+                    return false;  
+                }  
+            });
+        }
+
+        Preference syncPref = findPreference("syncDroidLinkPref");
+        if (syncPref != null) {
+            syncPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                @Override
+                public boolean onPreferenceClick(Preference preference) {
+                    SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(UserSettingActivity.this);
+                    String ip = prefs.getString("prefUserAddress", "192.168.4.1");
+                    android.widget.Toast.makeText(UserSettingActivity.this, "Syncing from http://" + ip + "/load...", android.widget.Toast.LENGTH_SHORT).show();
+                    DroidLinkSync.syncFromDevice(UserSettingActivity.this, ip, new DroidLinkSync.SyncCallback() {
+                        @Override
+                        public void onSuccess(final String summary) {
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    android.widget.Toast.makeText(UserSettingActivity.this, summary, android.widget.Toast.LENGTH_LONG).show();
+                                }
+                            });
+                        }
+
+                        @Override
+                        public void onError(final String errorMessage) {
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    android.widget.Toast.makeText(UserSettingActivity.this, "Sync Failed: " + errorMessage, android.widget.Toast.LENGTH_LONG).show();
+                                }
+                            });
+                        }
+                    });
+                    return true;
+                }
+            });
+        }  
         
     }
     

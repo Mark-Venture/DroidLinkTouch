@@ -21,7 +21,7 @@ public class string_parser
 		while (stringtokenizertest.hasMoreElements())
 		{
 			mes = stringtokenizertest.nextToken();
-			if ((mes.charAt(0) == ':') && ((mes.charAt(3) == 'X') || (mes.charAt(3) == 'x')) && ((mes.charAt(4) == 'X') || (mes.charAt(4) == 'x')))
+			if (mes.length() >= 5 && (mes.charAt(0) == ':') && ((mes.charAt(3) == 'X') || (mes.charAt(3) == 'x')) && ((mes.charAt(4) == 'X') || (mes.charAt(4) == 'x')))
 			{
 				if (Main_activity.panel1 == 1) {Main_activity.sendstring(":" + mes.charAt(1) + mes.charAt(2) + "01\r"); wait_period(50);}
 				if (Main_activity.panel2 == 1) {Main_activity.sendstring(":" + mes.charAt(1) + mes.charAt(2) + "02\r"); wait_period(50);}
@@ -35,7 +35,7 @@ public class string_parser
 				if (Main_activity.panel10 == 1) {Main_activity.sendstring(":" + mes.charAt(1) + mes.charAt(2) + "10\r"); wait_period(50);}
 			}
 
-			else if ((mes.charAt(0) == '*') && ((mes.charAt(3) == 'X') || (mes.charAt(3) == 'x')) && ((mes.charAt(4) == 'X') || (mes.charAt(4) == 'x')))
+			else if (mes.length() >= 5 && (mes.charAt(0) == '*') && ((mes.charAt(3) == 'X') || (mes.charAt(3) == 'x')) && ((mes.charAt(4) == 'X') || (mes.charAt(4) == 'x')))
 			{
 				if (Main_activity.hp1 == 1) {Main_activity.sendstring("*" + mes.charAt(1) + mes.charAt(2) + "01\r"); wait_period(50);}
 				if (Main_activity.hp2 == 1) {Main_activity.sendstring("*" + mes.charAt(1) + mes.charAt(2) + "02\r"); wait_period(50);}

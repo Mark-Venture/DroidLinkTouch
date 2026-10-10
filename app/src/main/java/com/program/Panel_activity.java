@@ -310,42 +310,14 @@ public class Panel_activity extends Activity
 		});
     	btn4.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				//Check to see what the current selected sound resource is. ex if its whis, $xyy x is 5
-				/*
-				Context context1 = getApplicationContext();
-				if (Main_activity.panel1 == 1) {Toast.makeText(context1, ":OP01\r", Toast.LENGTH_LONG).show();}
-				if (Main_activity.panel2 == 1) {Toast.makeText(context1, ":OP02\r", Toast.LENGTH_LONG).show();}
-				if (Main_activity.panel3 == 1) {Toast.makeText(context1, ":OP03\r", Toast.LENGTH_LONG).show();}
-				if (Main_activity.panel4 == 1) {Toast.makeText(context1, ":OP04\r", Toast.LENGTH_LONG).show();}
-				if (Main_activity.panel5 == 1) {Toast.makeText(context1, ":OP05\r", Toast.LENGTH_LONG).show();}
-				if (Main_activity.panel6 == 1) {Toast.makeText(context1, ":OP06\r", Toast.LENGTH_LONG).show();}
-				if (Main_activity.panel7 == 1) {Toast.makeText(context1, ":OP07\r", Toast.LENGTH_LONG).show();}
-				if (Main_activity.panel8 == 1) {Toast.makeText(context1, ":OP08\r", Toast.LENGTH_LONG).show();}
-				if (Main_activity.panel9 == 1) {Toast.makeText(context1, ":OP09\r", Toast.LENGTH_LONG).show();}
-				if (Main_activity.panel10 == 1) {Toast.makeText(context1, ":OP10\r", Toast.LENGTH_LONG).show();}
-				*/
-				String send = prefs.getString("pk4", ":OPXX");
-				ste.select_string(send);
+				String send = prefs.getString("pk4", ":DSxx");
+				executePanelAction(send, true, prefs, ste);
 			}
 		});
     	btn5.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				//Check to see what the current selected sound resource is. ex if its whis, $xyy x is 5
-				/*
-				Context context1 = getApplicationContext();
-				if (Main_activity.panel1 == 1) {Toast.makeText(context1, ":CL01\r", Toast.LENGTH_LONG).show();}
-				if (Main_activity.panel2 == 1) {Toast.makeText(context1, ":CL02\r", Toast.LENGTH_LONG).show();}
-				if (Main_activity.panel3 == 1) {Toast.makeText(context1, ":CL03\r", Toast.LENGTH_LONG).show();}
-				if (Main_activity.panel4 == 1) {Toast.makeText(context1, ":CL04\r", Toast.LENGTH_LONG).show();}
-				if (Main_activity.panel5 == 1) {Toast.makeText(context1, ":CL05\r", Toast.LENGTH_LONG).show();}
-				if (Main_activity.panel6 == 1) {Toast.makeText(context1, ":CL06\r", Toast.LENGTH_LONG).show();}
-				if (Main_activity.panel7 == 1) {Toast.makeText(context1, ":CL07\r", Toast.LENGTH_LONG).show();}
-				if (Main_activity.panel8 == 1) {Toast.makeText(context1, ":CL08\r", Toast.LENGTH_LONG).show();}
-				if (Main_activity.panel9 == 1) {Toast.makeText(context1, ":CL09\r", Toast.LENGTH_LONG).show();}
-				if (Main_activity.panel10 == 1) {Toast.makeText(context1, ":CL10\r", Toast.LENGTH_LONG).show();}
-				*/
-				String send = prefs.getString("pk5", ":CLXX");
-				ste.select_string(send);
+				String send = prefs.getString("pk5", ":DS00");
+				executePanelAction(send, false, prefs, ste);
 			}
 		});
     	btn6.setOnClickListener(new View.OnClickListener() {
@@ -971,5 +943,61 @@ public class WizardPagerAdapter extends PagerAdapter {
         return arg0 == ((View) arg1);
     }
 }
+
+	private void executePanelAction(String send, boolean isOpen, SharedPreferences prefs, string_parser ste) {
+		int selectedCount = 0;
+		StringBuilder sentCmds = new StringBuilder();
+		StringBuilder panelNames = new StringBuilder();
+
+		for (int i = 1; i <= 10; i++) {
+			boolean isSelected = false;
+			switch (i) {
+			case 1: isSelected = (Main_activity.panel1 == 1); break;
+			case 2: isSelected = (Main_activity.panel2 == 1); break;
+			case 3: isSelected = (Main_activity.panel3 == 1); break;
+			case 4: isSelected = (Main_activity.panel4 == 1); break;
+			case 5: isSelected = (Main_activity.panel5 == 1); break;
+			case 6: isSelected = (Main_activity.panel6 == 1); break;
+			case 7: isSelected = (Main_activity.panel7 == 1); break;
+			case 8: isSelected = (Main_activity.panel8 == 1); break;
+			case 9: isSelected = (Main_activity.panel9 == 1); break;
+			case 10: isSelected = (Main_activity.panel10 == 1); break;
+			}
+
+			if (isSelected) {
+				selectedCount++;
+				String key = isOpen ? ("dp" + i + "_open") : ("dp" + i + "_close");
+				String defaultCmd;
+				if (isOpen) {
+					if (send != null && send.toUpperCase().contains("OP")) {
+						defaultCmd = String.format(":OP%02d", i);
+					} else {
+						defaultCmd = String.format(":DS%02d", i);
+					}
+				} else {
+					if (send != null && send.toUpperCase().contains("CL")) {
+						defaultCmd = String.format(":CL%02d", i);
+					} else {
+						defaultCmd = ":DS00";
+					}
+				}
+				String cmd = prefs.getString(key, defaultCmd);
+				if (cmd != null && !cmd.trim().isEmpty()) {
+					ste.select_string(cmd);
+					if (sentCmds.length() > 0) sentCmds.append(", ");
+					sentCmds.append(cmd);
+					if (panelNames.length() > 0) panelNames.append(", ");
+					panelNames.append("P").append(i);
+				}
+			}
+		}
+
+		if (selectedCount == 0) {
+			Toast.makeText(this, "No panels selected! Tap panels on the dome first.", Toast.LENGTH_SHORT).show();
+		} else {
+			String verb = isOpen ? "Opened" : "Closed";
+			Toast.makeText(this, verb + " " + panelNames + " (" + sentCmds + ")", Toast.LENGTH_SHORT).show();
+		}
+	}
 
 }

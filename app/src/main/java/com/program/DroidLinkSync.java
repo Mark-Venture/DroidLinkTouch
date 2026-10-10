@@ -93,6 +93,18 @@ public class DroidLinkSync {
                             String cmd = item.optString("c", "");
                             editor.putString("pk" + keyNum + "_name", label);
                             editor.putString("pk" + keyNum, cmd);
+
+                            // Map first 10 dome items to Dome Panels 1-10
+                            if (i < 10) {
+                                editor.putString("dp" + (i + 1) + "_name", label);
+                                editor.putString("dp" + (i + 1) + "_open", cmd);
+                                if (cmd.startsWith(":DS") || cmd.startsWith(":BS")) {
+                                    editor.putString("dp" + (i + 1) + "_close", ":DS00");
+                                } else {
+                                    editor.putString("dp" + (i + 1) + "_close", ":CL" + String.format("%02d", i + 1));
+                                }
+                            }
+
                             domeCount++;
                         }
                     }

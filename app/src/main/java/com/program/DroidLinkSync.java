@@ -94,15 +94,19 @@ public class DroidLinkSync {
                             editor.putString("pk" + keyNum + "_name", label);
                             editor.putString("pk" + keyNum, cmd);
 
-                            // Map first 10 dome items to Dome Panels 1-10
-                            if (i < 10) {
+                            // Map first 12 dome items to Dome Panels 1-12
+                            if (i < 12) {
                                 editor.putString("dp" + (i + 1) + "_name", label);
-                                editor.putString("dp" + (i + 1) + "_open", cmd);
-                                if (cmd.startsWith(":DS") || cmd.startsWith(":BS")) {
-                                    editor.putString("dp" + (i + 1) + "_close", ":DS00");
-                                } else {
-                                    editor.putString("dp" + (i + 1) + "_close", ":CL" + String.format("%02d", i + 1));
+                                String slotStr = String.format("%02d", i);
+                                String openCmd = (cmd != null && !cmd.trim().isEmpty()) ? cmd : (":DS" + slotStr + "O");
+                                String closeCmd = ":DS" + slotStr + "C";
+                                if (openCmd.endsWith("O")) {
+                                    closeCmd = openCmd.substring(0, openCmd.length() - 1) + "C";
+                                } else if (openCmd.startsWith(":OP")) {
+                                    closeCmd = ":CL" + openCmd.substring(3);
                                 }
+                                editor.putString("dp" + (i + 1) + "_open", openCmd);
+                                editor.putString("dp" + (i + 1) + "_close", closeCmd);
                             }
 
                             domeCount++;

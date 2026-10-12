@@ -33,6 +33,8 @@ public class string_parser
 				if (Main_activity.panel8 == 1) {Main_activity.sendstring(":" + mes.charAt(1) + mes.charAt(2) + "08\r"); wait_period(50);}
 				if (Main_activity.panel9 == 1) {Main_activity.sendstring(":" + mes.charAt(1) + mes.charAt(2) + "09\r"); wait_period(50);}
 				if (Main_activity.panel10 == 1) {Main_activity.sendstring(":" + mes.charAt(1) + mes.charAt(2) + "10\r"); wait_period(50);}
+				if (Main_activity.panel11 == 1) {Main_activity.sendstring(":" + mes.charAt(1) + mes.charAt(2) + "11\r"); wait_period(50);}
+				if (Main_activity.panel12 == 1) {Main_activity.sendstring(":" + mes.charAt(1) + mes.charAt(2) + "12\r"); wait_period(50);}
 			}
 
 			else if (mes.length() >= 5 && (mes.charAt(0) == '*') && ((mes.charAt(3) == 'X') || (mes.charAt(3) == 'x')) && ((mes.charAt(4) == 'X') || (mes.charAt(4) == 'x')))

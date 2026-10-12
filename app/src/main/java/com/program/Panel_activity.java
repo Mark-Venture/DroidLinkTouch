@@ -23,6 +23,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.view.MotionEvent;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class Panel_activity extends Activity
@@ -553,34 +555,9 @@ public class Panel_activity extends Activity
         ImageView jv = (ImageView) findViewById (R.id.panel8_imageview);
         ImageView kv = (ImageView) findViewById (R.id.panel9_imageview);
         ImageView mv = (ImageView) findViewById (R.id.panel10_imageview);
+        ImageView ov = (ImageView) findViewById (R.id.panel11_imageview);
+        ImageView pv = (ImageView) findViewById (R.id.panel12_imageview);
         
-        /*
-        //imageView1 is selection, imageView2 is panels
-        av.setImageBitmap(
-        	    decodeSampledBitmapFromResource(getResources(), R.drawable.panel_selection_layer, 600, 800));        
-        bv.setImageBitmap(
-        	    decodeSampledBitmapFromResource(getResources(), R.drawable.dome_panel_wireframe, 600, 800)); 
-        cv.setImageBitmap(
-        	    decodeSampledBitmapFromResource(getResources(), R.drawable.panel1_light, 600, 800)); 
-        dv.setImageBitmap(
-        	    decodeSampledBitmapFromResource(getResources(), R.drawable.panel2_light, 600, 800)); 
-        ev.setImageBitmap(
-        	    decodeSampledBitmapFromResource(getResources(), R.drawable.panel3_light, 600, 800)); 
-        fv.setImageBitmap(
-        	    decodeSampledBitmapFromResource(getResources(), R.drawable.panel4_light, 600, 800)); 
-        gv.setImageBitmap(
-        	    decodeSampledBitmapFromResource(getResources(), R.drawable.panel5_light, 600, 800)); 
-        hv.setImageBitmap(
-        	    decodeSampledBitmapFromResource(getResources(), R.drawable.panel6_light, 600, 800)); 
-        iv.setImageBitmap(
-        	    decodeSampledBitmapFromResource(getResources(), R.drawable.panel7_light, 600, 800)); 
-        jv.setImageBitmap(
-        	    decodeSampledBitmapFromResource(getResources(), R.drawable.panel8_light, 600, 800)); 
-        kv.setImageBitmap(
-        	    decodeSampledBitmapFromResource(getResources(), R.drawable.panel9_light, 600, 800)); 
-        mv.setImageBitmap(
-        	    decodeSampledBitmapFromResource(getResources(), R.drawable.panel10_light, 400, 400)); 
-        */
         if (Main_activity.panel1 == 0) {cv.setVisibility(View.INVISIBLE);}
  	   	else {cv.setVisibility(View.VISIBLE);}
         if (Main_activity.panel2 == 0) {dv.setVisibility(View.INVISIBLE);}
@@ -601,6 +578,10 @@ public class Panel_activity extends Activity
  	   	else {kv.setVisibility(View.VISIBLE);}
         if (Main_activity.panel10 == 0) {mv.setVisibility(View.INVISIBLE);}
  	   	else {mv.setVisibility(View.VISIBLE);}
+        if (Main_activity.panel11 == 0) {ov.setVisibility(View.INVISIBLE);}
+ 	   	else {ov.setVisibility(View.VISIBLE);}
+        if (Main_activity.panel12 == 0) {pv.setVisibility(View.INVISIBLE);}
+ 	   	else {pv.setVisibility(View.VISIBLE);}
         
         ImageButton btnHome = (ImageButton) findViewById(R.id.home_Button);
         btnHome.setOnClickListener(new View.OnClickListener() {
@@ -622,6 +603,8 @@ public class Panel_activity extends Activity
 		        ImageView jv = (ImageView) findViewById (R.id.panel8_imageview);
 		        ImageView kv = (ImageView) findViewById (R.id.panel9_imageview);
 		        ImageView mv = (ImageView) findViewById (R.id.panel10_imageview);
+		        ImageView ov = (ImageView) findViewById (R.id.panel11_imageview);
+		        ImageView pv = (ImageView) findViewById (R.id.panel12_imageview);
 				
 				Main_activity.panel1 = 0;
 				Main_activity.panel2 = 0;
@@ -633,6 +616,8 @@ public class Panel_activity extends Activity
 				Main_activity.panel8 = 0;
 				Main_activity.panel9 = 0;
 				Main_activity.panel10 = 0;
+				Main_activity.panel11 = 0;
+				Main_activity.panel12 = 0;
 				cv.setVisibility(View.INVISIBLE);
 		        dv.setVisibility(View.INVISIBLE);
 		        ev.setVisibility(View.INVISIBLE);
@@ -643,6 +628,8 @@ public class Panel_activity extends Activity
 		        jv.setVisibility(View.INVISIBLE);
 		        kv.setVisibility(View.INVISIBLE);
 		        mv.setVisibility(View.INVISIBLE);
+		        ov.setVisibility(View.INVISIBLE);
+		        pv.setVisibility(View.INVISIBLE);
 			}
 		});
     	btnbottom.setOnClickListener(new View.OnClickListener() {
@@ -657,6 +644,8 @@ public class Panel_activity extends Activity
 		        ImageView jv = (ImageView) findViewById (R.id.panel8_imageview);
 		        ImageView kv = (ImageView) findViewById (R.id.panel9_imageview);
 		        ImageView mv = (ImageView) findViewById (R.id.panel10_imageview);
+		        ImageView ov = (ImageView) findViewById (R.id.panel11_imageview);
+		        ImageView pv = (ImageView) findViewById (R.id.panel12_imageview);
 				
 				Main_activity.panel1 = 1;
 				Main_activity.panel2 = 1;
@@ -668,6 +657,8 @@ public class Panel_activity extends Activity
 				Main_activity.panel8 = 0;
 				Main_activity.panel9 = 0;
 				Main_activity.panel10 = 0;
+				Main_activity.panel11 = 1;
+				Main_activity.panel12 = 1;
 				
 				cv.setVisibility(View.VISIBLE);
 		        dv.setVisibility(View.VISIBLE);
@@ -679,6 +670,8 @@ public class Panel_activity extends Activity
 		        jv.setVisibility(View.INVISIBLE);
 		        kv.setVisibility(View.INVISIBLE);
 		        mv.setVisibility(View.INVISIBLE);
+		        ov.setVisibility(View.VISIBLE);
+		        pv.setVisibility(View.VISIBLE);
 			}
 		});
     	btntop.setOnClickListener(new View.OnClickListener() {
@@ -693,6 +686,8 @@ public class Panel_activity extends Activity
 		        ImageView jv = (ImageView) findViewById (R.id.panel8_imageview);
 		        ImageView kv = (ImageView) findViewById (R.id.panel9_imageview);
 		        ImageView mv = (ImageView) findViewById (R.id.panel10_imageview);
+		        ImageView ov = (ImageView) findViewById (R.id.panel11_imageview);
+		        ImageView pv = (ImageView) findViewById (R.id.panel12_imageview);
 				
 				Main_activity.panel1 = 0;
 				Main_activity.panel2 = 0;
@@ -704,6 +699,8 @@ public class Panel_activity extends Activity
 				Main_activity.panel8 = 1;
 				Main_activity.panel9 = 1;
 				Main_activity.panel10 = 1;
+				Main_activity.panel11 = 0;
+				Main_activity.panel12 = 0;
 				
 				cv.setVisibility(View.INVISIBLE);
 		        dv.setVisibility(View.INVISIBLE);
@@ -715,6 +712,8 @@ public class Panel_activity extends Activity
 		        jv.setVisibility(View.VISIBLE);
 		        kv.setVisibility(View.VISIBLE);
 		        mv.setVisibility(View.VISIBLE);
+		        ov.setVisibility(View.INVISIBLE);
+		        pv.setVisibility(View.INVISIBLE);
 			}
 		});
     	btnall.setOnClickListener(new View.OnClickListener() {
@@ -729,6 +728,8 @@ public class Panel_activity extends Activity
 		        ImageView jv = (ImageView) findViewById (R.id.panel8_imageview);
 		        ImageView kv = (ImageView) findViewById (R.id.panel9_imageview);
 		        ImageView mv = (ImageView) findViewById (R.id.panel10_imageview);
+		        ImageView ov = (ImageView) findViewById (R.id.panel11_imageview);
+		        ImageView pv = (ImageView) findViewById (R.id.panel12_imageview);
 				
 				Main_activity.panel1 = 1;
 				Main_activity.panel2 = 1;
@@ -740,6 +741,8 @@ public class Panel_activity extends Activity
 				Main_activity.panel8 = 1;
 				Main_activity.panel9 = 1;
 				Main_activity.panel10 = 1;
+				Main_activity.panel11 = 1;
+				Main_activity.panel12 = 1;
 				
 				cv.setVisibility(View.VISIBLE);
 		        dv.setVisibility(View.VISIBLE);
@@ -751,6 +754,8 @@ public class Panel_activity extends Activity
 		        jv.setVisibility(View.VISIBLE);
 		        kv.setVisibility(View.VISIBLE);
 		        mv.setVisibility(View.VISIBLE);
+		        ov.setVisibility(View.VISIBLE);
+		        pv.setVisibility(View.VISIBLE);
 			}
 		});
         
@@ -784,6 +789,8 @@ public boolean onTouch (View v, MotionEvent ev)
     ImageView jv = (ImageView) findViewById (R.id.panel8_imageview);
     ImageView kv = (ImageView) findViewById (R.id.panel9_imageview);
     ImageView mv = (ImageView) findViewById (R.id.panel10_imageview);
+    ImageView ov = (ImageView) findViewById (R.id.panel11_imageview);
+    ImageView pv = (ImageView) findViewById (R.id.panel12_imageview);
     ImageView imageView = (ImageView) v.findViewById (R.id.imageView_Panels);
     if (imageView == null) return false;
 
@@ -852,6 +859,14 @@ public boolean onTouch (View v, MotionEvent ev)
     	   if (mv.getVisibility() == View.VISIBLE) {mv.setVisibility(View.INVISIBLE); Main_activity.panel10 = 0;}
     	   else {mv.setVisibility(View.VISIBLE); Main_activity.panel10 = 1;}
        } // Panel 10
+       else if (ct.closeMatch (Color.argb(255, 128, 0, 128), touchColor, tolerance)){
+    	   if (ov.getVisibility() == View.VISIBLE) {ov.setVisibility(View.INVISIBLE); Main_activity.panel11 = 0;}
+    	   else {ov.setVisibility(View.VISIBLE); Main_activity.panel11 = 1;}
+       } // Panel 11
+       else if (ct.closeMatch (Color.argb(255, 0, 128, 128), touchColor, tolerance)){
+    	   if (pv.getVisibility() == View.VISIBLE) {pv.setVisibility(View.INVISIBLE); Main_activity.panel12 = 0;}
+    	   else {pv.setVisibility(View.VISIBLE); Main_activity.panel12 = 1;}
+       } // Panel 12
        
        handledHere = true; 
        
@@ -944,12 +959,12 @@ public class WizardPagerAdapter extends PagerAdapter {
     }
 }
 
-	private void executePanelAction(String send, boolean isOpen, SharedPreferences prefs, string_parser ste) {
+	private void executePanelAction(String send, boolean isOpen, SharedPreferences prefs, final string_parser ste) {
 		int selectedCount = 0;
-		StringBuilder sentCmds = new StringBuilder();
+		List<String> commands = new ArrayList<>();
 		StringBuilder panelNames = new StringBuilder();
 
-		for (int i = 1; i <= 10; i++) {
+		for (int i = 1; i <= 12; i++) {
 			boolean isSelected = false;
 			switch (i) {
 			case 1: isSelected = (Main_activity.panel1 == 1); break;
@@ -962,30 +977,18 @@ public class WizardPagerAdapter extends PagerAdapter {
 			case 8: isSelected = (Main_activity.panel8 == 1); break;
 			case 9: isSelected = (Main_activity.panel9 == 1); break;
 			case 10: isSelected = (Main_activity.panel10 == 1); break;
+			case 11: isSelected = (Main_activity.panel11 == 1); break;
+			case 12: isSelected = (Main_activity.panel12 == 1); break;
 			}
 
 			if (isSelected) {
 				selectedCount++;
 				String key = isOpen ? ("dp" + i + "_open") : ("dp" + i + "_close");
-				String defaultCmd;
-				if (isOpen) {
-					if (send != null && send.toUpperCase().contains("OP")) {
-						defaultCmd = String.format(":OP%02d", i);
-					} else {
-						defaultCmd = String.format(":DS%02d", i);
-					}
-				} else {
-					if (send != null && send.toUpperCase().contains("CL")) {
-						defaultCmd = String.format(":CL%02d", i);
-					} else {
-						defaultCmd = ":DS00";
-					}
-				}
+				String slotStr = String.format("%02d", i - 1);
+				String defaultCmd = isOpen ? (":DS" + slotStr + "O") : (":DS" + slotStr + "C");
 				String cmd = prefs.getString(key, defaultCmd);
 				if (cmd != null && !cmd.trim().isEmpty()) {
-					ste.select_string(cmd);
-					if (sentCmds.length() > 0) sentCmds.append(", ");
-					sentCmds.append(cmd);
+					commands.add(cmd.trim());
 					if (panelNames.length() > 0) panelNames.append(", ");
 					panelNames.append("P").append(i);
 				}
@@ -994,10 +997,49 @@ public class WizardPagerAdapter extends PagerAdapter {
 
 		if (selectedCount == 0) {
 			Toast.makeText(this, "No panels selected! Tap panels on the dome first.", Toast.LENGTH_SHORT).show();
-		} else {
-			String verb = isOpen ? "Opened" : "Closed";
-			Toast.makeText(this, verb + " " + panelNames + " (" + sentCmds + ")", Toast.LENGTH_SHORT).show();
+			return;
 		}
+
+		// Group commands into chunks of at most 6 per line with no spaces or commas
+		List<String> chunks = new ArrayList<>();
+		StringBuilder currentChunk = new StringBuilder();
+		int countInChunk = 0;
+
+		for (String cmd : commands) {
+			currentChunk.append(cmd);
+			countInChunk++;
+			if (countInChunk >= 6) {
+				chunks.add(currentChunk.toString());
+				currentChunk = new StringBuilder();
+				countInChunk = 0;
+			}
+		}
+		if (currentChunk.length() > 0) {
+			chunks.add(currentChunk.toString());
+		}
+
+		// Send chunks on background thread to prevent blocking UI
+		final List<String> chunksToSend = chunks;
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				for (int c = 0; c < chunksToSend.size(); c++) {
+					ste.select_string(chunksToSend.get(c));
+					if (c < chunksToSend.size() - 1) {
+						try {
+							Thread.sleep(50);
+						} catch (InterruptedException ignored) {}
+					}
+				}
+			}
+		}).start();
+
+		String verb = isOpen ? "Opened" : "Closed";
+		StringBuilder fullSent = new StringBuilder();
+		for (String c : chunks) {
+			fullSent.append(c);
+		}
+		Toast.makeText(this, verb + " " + panelNames + " (" + fullSent + ")", Toast.LENGTH_SHORT).show();
 	}
 
 }

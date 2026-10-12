@@ -95,6 +95,8 @@ public class Main_activity extends Activity implements View.OnTouchListener {
 	public static int panel8 = 0;
 	public static int panel9 = 0;
 	public static int panel10 = 0;
+	public static int panel11 = 0;
+	public static int panel12 = 0;
 	public static int topLED = 0;
 	public static int bottomLED = 0;
 	public static int bigLED = 0;

@@ -2223,18 +2223,18 @@
                         android:title="ACTION" />
                 </PreferenceCategory>
             </PreferenceScreen>
-            <PreferenceScreen android:title="DOME PANELS 1-10 ACTIONS" >
+            <PreferenceScreen android:title="DOME PANELS 1-12 ACTIONS" >
                 <PreferenceCategory android:title="PANEL 1" >
                     <EditTextPreference
                         android:defaultValue="Panel 1"
                         android:key="dp1_name"
                         android:title="NAME" />
                     <EditTextPreference
-                        android:defaultValue=":DS01"
+                        android:defaultValue=":DS00O"
                         android:key="dp1_open"
                         android:title="OPEN ACTION" />
                     <EditTextPreference
-                        android:defaultValue=":DS00"
+                        android:defaultValue=":DS00C"
                         android:key="dp1_close"
                         android:title="CLOSE ACTION" />
                 </PreferenceCategory>
@@ -2244,11 +2244,11 @@
                         android:key="dp2_name"
                         android:title="NAME" />
                     <EditTextPreference
-                        android:defaultValue=":DS02"
+                        android:defaultValue=":DS01O"
                         android:key="dp2_open"
                         android:title="OPEN ACTION" />
                     <EditTextPreference
-                        android:defaultValue=":DS00"
+                        android:defaultValue=":DS01C"
                         android:key="dp2_close"
                         android:title="CLOSE ACTION" />
                 </PreferenceCategory>
@@ -2258,11 +2258,11 @@
                         android:key="dp3_name"
                         android:title="NAME" />
                     <EditTextPreference
-                        android:defaultValue=":DS03"
+                        android:defaultValue=":DS02O"
                         android:key="dp3_open"
                         android:title="OPEN ACTION" />
                     <EditTextPreference
-                        android:defaultValue=":DS00"
+                        android:defaultValue=":DS02C"
                         android:key="dp3_close"
                         android:title="CLOSE ACTION" />
                 </PreferenceCategory>
@@ -2272,11 +2272,11 @@
                         android:key="dp4_name"
                         android:title="NAME" />
                     <EditTextPreference
-                        android:defaultValue=":DS04"
+                        android:defaultValue=":DS03O"
                         android:key="dp4_open"
                         android:title="OPEN ACTION" />
                     <EditTextPreference
-                        android:defaultValue=":DS00"
+                        android:defaultValue=":DS03C"
                         android:key="dp4_close"
                         android:title="CLOSE ACTION" />
                 </PreferenceCategory>
@@ -2286,11 +2286,11 @@
                         android:key="dp5_name"
                         android:title="NAME" />
                     <EditTextPreference
-                        android:defaultValue=":DS05"
+                        android:defaultValue=":DS04O"
                         android:key="dp5_open"
                         android:title="OPEN ACTION" />
                     <EditTextPreference
-                        android:defaultValue=":DS00"
+                        android:defaultValue=":DS04C"
                         android:key="dp5_close"
                         android:title="CLOSE ACTION" />
                 </PreferenceCategory>
@@ -2300,11 +2300,11 @@
                         android:key="dp6_name"
                         android:title="NAME" />
                     <EditTextPreference
-                        android:defaultValue=":DS06"
+                        android:defaultValue=":DS05O"
                         android:key="dp6_open"
                         android:title="OPEN ACTION" />
                     <EditTextPreference
-                        android:defaultValue=":DS00"
+                        android:defaultValue=":DS05C"
                         android:key="dp6_close"
                         android:title="CLOSE ACTION" />
                 </PreferenceCategory>
@@ -2314,11 +2314,11 @@
                         android:key="dp7_name"
                         android:title="NAME" />
                     <EditTextPreference
-                        android:defaultValue=":DS07"
+                        android:defaultValue=":DS06O"
                         android:key="dp7_open"
                         android:title="OPEN ACTION" />
                     <EditTextPreference
-                        android:defaultValue=":DS00"
+                        android:defaultValue=":DS06C"
                         android:key="dp7_close"
                         android:title="CLOSE ACTION" />
                 </PreferenceCategory>
@@ -2328,11 +2328,11 @@
                         android:key="dp8_name"
                         android:title="NAME" />
                     <EditTextPreference
-                        android:defaultValue=":DS08"
+                        android:defaultValue=":DS07O"
                         android:key="dp8_open"
                         android:title="OPEN ACTION" />
                     <EditTextPreference
-                        android:defaultValue=":DS00"
+                        android:defaultValue=":DS07C"
                         android:key="dp8_close"
                         android:title="CLOSE ACTION" />
                 </PreferenceCategory>
@@ -2342,11 +2342,11 @@
                         android:key="dp9_name"
                         android:title="NAME" />
                     <EditTextPreference
-                        android:defaultValue=":DS09"
+                        android:defaultValue=":DS08O"
                         android:key="dp9_open"
                         android:title="OPEN ACTION" />
                     <EditTextPreference
-                        android:defaultValue=":DS00"
+                        android:defaultValue=":DS08C"
                         android:key="dp9_close"
                         android:title="CLOSE ACTION" />
                 </PreferenceCategory>
@@ -2356,12 +2356,40 @@
                         android:key="dp10_name"
                         android:title="NAME" />
                     <EditTextPreference
-                        android:defaultValue=":DS10"
+                        android:defaultValue=":DS09O"
                         android:key="dp10_open"
                         android:title="OPEN ACTION" />
                     <EditTextPreference
-                        android:defaultValue=":DS00"
+                        android:defaultValue=":DS09C"
                         android:key="dp10_close"
+                        android:title="CLOSE ACTION" />
+                </PreferenceCategory>
+                <PreferenceCategory android:title="PANEL 11" >
+                    <EditTextPreference
+                        android:defaultValue="Panel 11"
+                        android:key="dp11_name"
+                        android:title="NAME" />
+                    <EditTextPreference
+                        android:defaultValue=":DS10O"
+                        android:key="dp11_open"
+                        android:title="OPEN ACTION" />
+                    <EditTextPreference
+                        android:defaultValue=":DS10C"
+                        android:key="dp11_close"
+                        android:title="CLOSE ACTION" />
+                </PreferenceCategory>
+                <PreferenceCategory android:title="PANEL 12" >
+                    <EditTextPreference
+                        android:defaultValue="Panel 12"
+                        android:key="dp12_name"
+                        android:title="NAME" />
+                    <EditTextPreference
+                        android:defaultValue=":DS11O"
+                        android:key="dp12_open"
+                        android:title="OPEN ACTION" />
+                    <EditTextPreference
+                        android:defaultValue=":DS11C"
+                        android:key="dp12_close"
                         android:title="CLOSE ACTION" />
                 </PreferenceCategory>
             </PreferenceScreen>

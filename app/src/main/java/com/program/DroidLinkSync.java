@@ -44,6 +44,36 @@ public class DroidLinkSync {
         }
     }
 
+    public static void ensureBodyPanelPreferences(SharedPreferences prefs) {
+        if (prefs == null) return;
+        int ver = prefs.getInt("body_cmds_version", 0);
+        if (ver < 2) {
+            SharedPreferences.Editor editor = prefs.edit();
+            for (int i = 0; i < Body_activity.COUNT; i++) {
+                int out = Body_activity.OUTPUT_NUMS[i];
+                String defName = Body_activity.DEFAULT_NAMES[i];
+                String defToggle = Body_activity.getDefaultToggleCmd(out);
+                String defOpen = Body_activity.getDefaultOpenCmd(out);
+                String defClose = Body_activity.getDefaultCloseCmd(out);
+
+                if (!prefs.contains("bp_" + out + "_name")) {
+                    editor.putString("bp_" + out + "_name", defName);
+                }
+                if (!prefs.contains("bp_" + out + "_cmd")) {
+                    editor.putString("bp_" + out + "_cmd", defToggle);
+                }
+                if (!prefs.contains("bp_" + out + "_open")) {
+                    editor.putString("bp_" + out + "_open", defOpen);
+                }
+                if (!prefs.contains("bp_" + out + "_close")) {
+                    editor.putString("bp_" + out + "_close", defClose);
+                }
+            }
+            editor.putInt("body_cmds_version", 2);
+            editor.apply();
+        }
+    }
+
     public static void syncFromDevice(final Context context, final String ipAddress, final SyncCallback callback) {
         new Thread(new Runnable() {
             @Override
@@ -89,16 +119,12 @@ public class DroidLinkSync {
                             editor.putString("mk" + keyNum + "_name", label);
                             editor.putString("mk" + keyNum, cmd);
 
-                            // Map first 6 body buttons to Doors 1-6
-                            if (i < 6) {
-                                editor.putString("door" + (i + 1) + "_name", label);
-                                editor.putString("door" + (i + 1) + "_cmd", cmd);
-                            }
-                            // Map next 8 body buttons (7-14) to Drawers 1-8
-                            else if (i < 14) {
-                                int drawerNum = (i - 6) + 1;
-                                editor.putString("drawer" + drawerNum + "_name", label);
-                                editor.putString("drawer" + drawerNum + "_cmd", cmd);
+                            if (i < Body_activity.COUNT) {
+                                int out = Body_activity.OUTPUT_NUMS[i];
+                                editor.putString("bp_" + out + "_name", label);
+                                if (cmd != null && !cmd.trim().isEmpty()) {
+                                    editor.putString("bp_" + out + "_cmd", cmd.trim());
+                                }
                             }
 
                             bodyCount++;

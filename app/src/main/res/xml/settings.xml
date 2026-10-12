@@ -3169,148 +3169,314 @@
             android:key="setB"
             android:persistent="false"
             android:title="Body Panels &amp; Drawers Screen" >
-            <PreferenceScreen android:title="BODY DOORS (6)" >
-                <PreferenceCategory android:title="DOOR 1 (Upper Left)" >
+            <PreferenceScreen android:title="BODY DOORS &amp; ARMS (Outputs 0-8)" >
+                <PreferenceCategory android:title="0: FRONT LEFT DOOR (FRONT_LEFT_DOOR)" >
                     <EditTextPreference
-                        android:defaultValue="UL Door (UT)"
-                        android:key="door1_name"
+                        android:defaultValue="FRONT LEFT DOOR"
+                        android:key="bp_0_name"
                         android:title="NAME" />
                     <EditTextPreference
-                        android:defaultValue=":BS7T"
-                        android:key="door1_cmd"
-                        android:title="ACTION" />
+                        android:defaultValue=":BS00T"
+                        android:key="bp_0_cmd"
+                        android:title="TOGGLE ACTION" />
+                    <EditTextPreference
+                        android:defaultValue=":BS00O"
+                        android:key="bp_0_open"
+                        android:title="OPEN ACTION" />
+                    <EditTextPreference
+                        android:defaultValue=":BS00C"
+                        android:key="bp_0_close"
+                        android:title="CLOSE ACTION" />
                 </PreferenceCategory>
-                <PreferenceCategory android:title="DOOR 2 (Upper Right)" >
+                <PreferenceCategory android:title="1: FRONT RIGHT DOOR (FRONT_RIGHT_DOOR)" >
                     <EditTextPreference
-                        android:defaultValue="UR Door (UT)"
-                        android:key="door2_name"
+                        android:defaultValue="FRONT RIGHT DOOR"
+                        android:key="bp_1_name"
                         android:title="NAME" />
                     <EditTextPreference
-                        android:defaultValue=":BS8T"
-                        android:key="door2_cmd"
-                        android:title="ACTION" />
+                        android:defaultValue=":BS01T"
+                        android:key="bp_1_cmd"
+                        android:title="TOGGLE ACTION" />
+                    <EditTextPreference
+                        android:defaultValue=":BS01O"
+                        android:key="bp_1_open"
+                        android:title="OPEN ACTION" />
+                    <EditTextPreference
+                        android:defaultValue=":BS01C"
+                        android:key="bp_1_close"
+                        android:title="CLOSE ACTION" />
                 </PreferenceCategory>
-                <PreferenceCategory android:title="DOOR 3 (Center Up)" >
+                <PreferenceCategory android:title="2: BACK LEFT DOOR (BACK_LEFT_DOOR)" >
                     <EditTextPreference
-                        android:defaultValue="Center Up Door"
-                        android:key="door3_name"
+                        android:defaultValue="BACK LEFT DOOR"
+                        android:key="bp_2_name"
                         android:title="NAME" />
                     <EditTextPreference
-                        android:defaultValue=":BS03"
-                        android:key="door3_cmd"
-                        android:title="ACTION" />
+                        android:defaultValue=":BS02T"
+                        android:key="bp_2_cmd"
+                        android:title="TOGGLE ACTION" />
+                    <EditTextPreference
+                        android:defaultValue=":BS02O"
+                        android:key="bp_2_open"
+                        android:title="OPEN ACTION" />
+                    <EditTextPreference
+                        android:defaultValue=":BS02C"
+                        android:key="bp_2_close"
+                        android:title="CLOSE ACTION" />
                 </PreferenceCategory>
-                <PreferenceCategory android:title="DOOR 4 (Center Low)" >
+                <PreferenceCategory android:title="3: BACK RIGHT DOOR (BACK_RIGHT_DOOR)" >
                     <EditTextPreference
-                        android:defaultValue="Center Low Door"
-                        android:key="door4_name"
+                        android:defaultValue="BACK RIGHT DOOR"
+                        android:key="bp_3_name"
                         android:title="NAME" />
                     <EditTextPreference
-                        android:defaultValue=":BS04"
-                        android:key="door4_cmd"
-                        android:title="ACTION" />
+                        android:defaultValue=":BS03T"
+                        android:key="bp_3_cmd"
+                        android:title="TOGGLE ACTION" />
+                    <EditTextPreference
+                        android:defaultValue=":BS03O"
+                        android:key="bp_3_open"
+                        android:title="OPEN ACTION" />
+                    <EditTextPreference
+                        android:defaultValue=":BS03C"
+                        android:key="bp_3_close"
+                        android:title="CLOSE ACTION" />
                 </PreferenceCategory>
-                <PreferenceCategory android:title="DOOR 5 (Lower Left)" >
+                <PreferenceCategory android:title="4: CHARGE BAY (CHARGE_BAY)" >
                     <EditTextPreference
-                        android:defaultValue="LL Gripper Door"
-                        android:key="door5_name"
+                        android:defaultValue="CHARGE BAY"
+                        android:key="bp_4_name"
                         android:title="NAME" />
                     <EditTextPreference
-                        android:defaultValue=":BS05"
-                        android:key="door5_cmd"
-                        android:title="ACTION" />
+                        android:defaultValue=":BS04T"
+                        android:key="bp_4_cmd"
+                        android:title="TOGGLE ACTION" />
+                    <EditTextPreference
+                        android:defaultValue=":BS04O"
+                        android:key="bp_4_open"
+                        android:title="OPEN ACTION" />
+                    <EditTextPreference
+                        android:defaultValue=":BS04C"
+                        android:key="bp_4_close"
+                        android:title="CLOSE ACTION" />
                 </PreferenceCategory>
-                <PreferenceCategory android:title="DOOR 6 (Lower Right)" >
+                <PreferenceCategory android:title="5: DATA PORT (DATA_PORT)" >
                     <EditTextPreference
-                        android:defaultValue="LR Tool Door"
-                        android:key="door6_name"
+                        android:defaultValue="DATA PORT"
+                        android:key="bp_5_name"
                         android:title="NAME" />
                     <EditTextPreference
-                        android:defaultValue=":BS06"
-                        android:key="door6_cmd"
-                        android:title="ACTION" />
+                        android:defaultValue=":BS05T"
+                        android:key="bp_5_cmd"
+                        android:title="TOGGLE ACTION" />
+                    <EditTextPreference
+                        android:defaultValue=":BS05O"
+                        android:key="bp_5_open"
+                        android:title="OPEN ACTION" />
+                    <EditTextPreference
+                        android:defaultValue=":BS05C"
+                        android:key="bp_5_close"
+                        android:title="CLOSE ACTION" />
+                </PreferenceCategory>
+                <PreferenceCategory android:title="6: SMALL DOOR (SMALL_DOOR)" >
+                    <EditTextPreference
+                        android:defaultValue="SMALL DOOR"
+                        android:key="bp_6_name"
+                        android:title="NAME" />
+                    <EditTextPreference
+                        android:defaultValue=":BS06T"
+                        android:key="bp_6_cmd"
+                        android:title="TOGGLE ACTION" />
+                    <EditTextPreference
+                        android:defaultValue=":BS06O"
+                        android:key="bp_6_open"
+                        android:title="OPEN ACTION" />
+                    <EditTextPreference
+                        android:defaultValue=":BS06C"
+                        android:key="bp_6_close"
+                        android:title="CLOSE ACTION" />
+                </PreferenceCategory>
+                <PreferenceCategory android:title="7: UPPER UTIL ARM (UPPER_UTIL_ARM)" >
+                    <EditTextPreference
+                        android:defaultValue="UPPER UTIL ARM"
+                        android:key="bp_7_name"
+                        android:title="NAME" />
+                    <EditTextPreference
+                        android:defaultValue=":BS07T"
+                        android:key="bp_7_cmd"
+                        android:title="TOGGLE ACTION" />
+                    <EditTextPreference
+                        android:defaultValue=":BS07O"
+                        android:key="bp_7_open"
+                        android:title="OPEN ACTION" />
+                    <EditTextPreference
+                        android:defaultValue=":BS07C"
+                        android:key="bp_7_close"
+                        android:title="CLOSE ACTION" />
+                </PreferenceCategory>
+                <PreferenceCategory android:title="8: LOWER UTIL ARM (LOWER_UTIL_ARM)" >
+                    <EditTextPreference
+                        android:defaultValue="LOWER UTIL ARM"
+                        android:key="bp_8_name"
+                        android:title="NAME" />
+                    <EditTextPreference
+                        android:defaultValue=":BS08T"
+                        android:key="bp_8_cmd"
+                        android:title="TOGGLE ACTION" />
+                    <EditTextPreference
+                        android:defaultValue=":BS08O"
+                        android:key="bp_8_open"
+                        android:title="OPEN ACTION" />
+                    <EditTextPreference
+                        android:defaultValue=":BS08C"
+                        android:key="bp_8_close"
+                        android:title="CLOSE ACTION" />
                 </PreferenceCategory>
             </PreferenceScreen>
-            <PreferenceScreen android:title="BODY DRAWERS (8)" >
-                <PreferenceCategory android:title="DRAWER 1" >
+            <PreferenceScreen android:title="BODY DRAWERS (Outputs 16-23)" >
+                <PreferenceCategory android:title="16: DRAWER 1 (DRAWER_1)" >
                     <EditTextPreference
-                        android:defaultValue="Drawer 1"
-                        android:key="drawer1_name"
+                        android:defaultValue="DRAWER 1"
+                        android:key="bp_16_name"
                         android:title="NAME" />
                     <EditTextPreference
-                        android:defaultValue=":BS07"
-                        android:key="drawer1_cmd"
-                        android:title="ACTION" />
+                        android:defaultValue=":BS16T"
+                        android:key="bp_16_cmd"
+                        android:title="TOGGLE ACTION" />
+                    <EditTextPreference
+                        android:defaultValue=":BS16O"
+                        android:key="bp_16_open"
+                        android:title="OPEN ACTION" />
+                    <EditTextPreference
+                        android:defaultValue=":BS16C"
+                        android:key="bp_16_close"
+                        android:title="CLOSE ACTION" />
                 </PreferenceCategory>
-                <PreferenceCategory android:title="DRAWER 2" >
+                <PreferenceCategory android:title="17: DRAWER 2 (DRAWER_2)" >
                     <EditTextPreference
-                        android:defaultValue="Drawer 2"
-                        android:key="drawer2_name"
+                        android:defaultValue="DRAWER 2"
+                        android:key="bp_17_name"
                         android:title="NAME" />
                     <EditTextPreference
-                        android:defaultValue=":BS08"
-                        android:key="drawer2_cmd"
-                        android:title="ACTION" />
+                        android:defaultValue=":BS17T"
+                        android:key="bp_17_cmd"
+                        android:title="TOGGLE ACTION" />
+                    <EditTextPreference
+                        android:defaultValue=":BS17O"
+                        android:key="bp_17_open"
+                        android:title="OPEN ACTION" />
+                    <EditTextPreference
+                        android:defaultValue=":BS17C"
+                        android:key="bp_17_close"
+                        android:title="CLOSE ACTION" />
                 </PreferenceCategory>
-                <PreferenceCategory android:title="DRAWER 3" >
+                <PreferenceCategory android:title="18: DRAWER 3 (DRAWER_3)" >
                     <EditTextPreference
-                        android:defaultValue="Drawer 3"
-                        android:key="drawer3_name"
+                        android:defaultValue="DRAWER 3"
+                        android:key="bp_18_name"
                         android:title="NAME" />
                     <EditTextPreference
-                        android:defaultValue=":BS09"
-                        android:key="drawer3_cmd"
-                        android:title="ACTION" />
+                        android:defaultValue=":BS18T"
+                        android:key="bp_18_cmd"
+                        android:title="TOGGLE ACTION" />
+                    <EditTextPreference
+                        android:defaultValue=":BS18O"
+                        android:key="bp_18_open"
+                        android:title="OPEN ACTION" />
+                    <EditTextPreference
+                        android:defaultValue=":BS18C"
+                        android:key="bp_18_close"
+                        android:title="CLOSE ACTION" />
                 </PreferenceCategory>
-                <PreferenceCategory android:title="DRAWER 4" >
+                <PreferenceCategory android:title="19: DRAWER 4 (DRAWER_4)" >
                     <EditTextPreference
-                        android:defaultValue="Drawer 4"
-                        android:key="drawer4_name"
+                        android:defaultValue="DRAWER 4"
+                        android:key="bp_19_name"
                         android:title="NAME" />
                     <EditTextPreference
-                        android:defaultValue=":BS10"
-                        android:key="drawer4_cmd"
-                        android:title="ACTION" />
+                        android:defaultValue=":BS19T"
+                        android:key="bp_19_cmd"
+                        android:title="TOGGLE ACTION" />
+                    <EditTextPreference
+                        android:defaultValue=":BS19O"
+                        android:key="bp_19_open"
+                        android:title="OPEN ACTION" />
+                    <EditTextPreference
+                        android:defaultValue=":BS19C"
+                        android:key="bp_19_close"
+                        android:title="CLOSE ACTION" />
                 </PreferenceCategory>
-                <PreferenceCategory android:title="DRAWER 5" >
+                <PreferenceCategory android:title="20: DRAWER 5 (DRAWER_5)" >
                     <EditTextPreference
-                        android:defaultValue="Drawer 5"
-                        android:key="drawer5_name"
+                        android:defaultValue="DRAWER 5"
+                        android:key="bp_20_name"
                         android:title="NAME" />
                     <EditTextPreference
-                        android:defaultValue=":BS11"
-                        android:key="drawer5_cmd"
-                        android:title="ACTION" />
+                        android:defaultValue=":BS20T"
+                        android:key="bp_20_cmd"
+                        android:title="TOGGLE ACTION" />
+                    <EditTextPreference
+                        android:defaultValue=":BS20O"
+                        android:key="bp_20_open"
+                        android:title="OPEN ACTION" />
+                    <EditTextPreference
+                        android:defaultValue=":BS20C"
+                        android:key="bp_20_close"
+                        android:title="CLOSE ACTION" />
                 </PreferenceCategory>
-                <PreferenceCategory android:title="DRAWER 6" >
+                <PreferenceCategory android:title="21: DRAWER 6 (DRAWER_6)" >
                     <EditTextPreference
-                        android:defaultValue="Drawer 6"
-                        android:key="drawer6_name"
+                        android:defaultValue="DRAWER 6"
+                        android:key="bp_21_name"
                         android:title="NAME" />
                     <EditTextPreference
-                        android:defaultValue=":BS12"
-                        android:key="drawer6_cmd"
-                        android:title="ACTION" />
+                        android:defaultValue=":BS21T"
+                        android:key="bp_21_cmd"
+                        android:title="TOGGLE ACTION" />
+                    <EditTextPreference
+                        android:defaultValue=":BS21O"
+                        android:key="bp_21_open"
+                        android:title="OPEN ACTION" />
+                    <EditTextPreference
+                        android:defaultValue=":BS21C"
+                        android:key="bp_21_close"
+                        android:title="CLOSE ACTION" />
                 </PreferenceCategory>
-                <PreferenceCategory android:title="DRAWER 7" >
+                <PreferenceCategory android:title="22: DRAWER 7 (DRAWER_7)" >
                     <EditTextPreference
-                        android:defaultValue="Drawer 7"
-                        android:key="drawer7_name"
+                        android:defaultValue="DRAWER 7"
+                        android:key="bp_22_name"
                         android:title="NAME" />
                     <EditTextPreference
-                        android:defaultValue=":BS13"
-                        android:key="drawer7_cmd"
-                        android:title="ACTION" />
+                        android:defaultValue=":BS22T"
+                        android:key="bp_22_cmd"
+                        android:title="TOGGLE ACTION" />
+                    <EditTextPreference
+                        android:defaultValue=":BS22O"
+                        android:key="bp_22_open"
+                        android:title="OPEN ACTION" />
+                    <EditTextPreference
+                        android:defaultValue=":BS22C"
+                        android:key="bp_22_close"
+                        android:title="CLOSE ACTION" />
                 </PreferenceCategory>
-                <PreferenceCategory android:title="DRAWER 8" >
+                <PreferenceCategory android:title="23: DRAWER 8 (DRAWER_8)" >
                     <EditTextPreference
-                        android:defaultValue="Drawer 8"
-                        android:key="drawer8_name"
+                        android:defaultValue="DRAWER 8"
+                        android:key="bp_23_name"
                         android:title="NAME" />
                     <EditTextPreference
-                        android:defaultValue=":BS14"
-                        android:key="drawer8_cmd"
-                        android:title="ACTION" />
+                        android:defaultValue=":BS23T"
+                        android:key="bp_23_cmd"
+                        android:title="TOGGLE ACTION" />
+                    <EditTextPreference
+                        android:defaultValue=":BS23O"
+                        android:key="bp_23_open"
+                        android:title="OPEN ACTION" />
+                    <EditTextPreference
+                        android:defaultValue=":BS23C"
+                        android:key="bp_23_close"
+                        android:title="CLOSE ACTION" />
                 </PreferenceCategory>
             </PreferenceScreen>
         </PreferenceScreen>

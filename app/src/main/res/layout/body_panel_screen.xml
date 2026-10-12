@@ -4,100 +4,254 @@
     android:layout_height="match_parent"
     android:background="@drawable/background_main"
     android:orientation="horizontal"
-    android:padding="8dp" >
+    android:padding="6dp" >
 
     <!-- Home / Return Button -->
     <ImageButton
         android:id="@+id/home_Button"
         android:layout_width="0dp"
-        android:layout_height="120dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="5dp"
-        android:layout_weight="0.08"
+        android:layout_height="110dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginTop="4dp"
+        android:layout_weight="0.07"
         android:background="@null"
         android:scaleType="fitStart"
         android:src="@drawable/button_image" />
 
-    <!-- Main Content Area -->
+    <!-- Left Interactive Body Wireframe Graphic -->
+    <FrameLayout
+        android:id="@+id/body_wireframe_container"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginRight="6dp"
+        android:layout_weight="0.35" >
+
+        <ImageView
+            android:id="@+id/imageView_Selection_Body"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitCenter"
+            android:src="@drawable/body_selection_layer"
+            android:visibility="invisible" />
+
+        <ImageView
+            android:id="@+id/imageView_Body_Panels"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitCenter"
+            android:src="@drawable/body_panel_wireframe" />
+
+        <ImageView
+            android:id="@+id/imageView_Body_Highlights"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitCenter" />
+    </FrameLayout>
+
+    <!-- Right Control Area -->
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="0.92"
+        android:layout_weight="0.58"
         android:orientation="vertical" >
 
-        <!-- Top Header & Master Action Bar -->
+        <!-- Top Selection & Action Bar for Wireframe -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingBottom="6dp" >
+            android:layout_marginBottom="4dp"
+            android:background="@drawable/frame_attempt_2"
+            android:orientation="vertical"
+            android:padding="5dp" >
 
-            <TextView
-                android:id="@+id/body_title"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="BODY DOORS &amp; DRAWERS"
-                android:textColor="#f6b93f"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+            <!-- Row 1: Quick Select Buttons + Sync -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
 
-            <Button
-                android:id="@+id/button_sync_dl"
-                android:layout_width="wrap_content"
-                android:layout_height="38dp"
-                android:layout_marginRight="8dp"
-                android:background="@drawable/sound_button_image"
-                android:paddingLeft="12dp"
-                android:paddingRight="12dp"
-                android:text="SYNC DROIDLINK"
-                android:textColor="#6bc7eb"
-                android:textSize="11sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="4dp"
+                    android:text="SELECT:"
+                    android:textColor="#f6b93f"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
 
-            <Button
-                android:id="@+id/button_master_open"
-                android:layout_width="wrap_content"
-                android:layout_height="38dp"
-                android:layout_marginRight="8dp"
-                android:background="@drawable/default_button_image"
-                android:paddingLeft="14dp"
-                android:paddingRight="14dp"
-                android:text="ALL OPEN"
-                android:textColor="#00ff00"
-                android:textSize="12sp"
-                android:textStyle="bold" />
+                <Button
+                    android:id="@+id/button_sel_none"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="3dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/default_button_image"
+                    android:padding="0dp"
+                    android:text="NONE"
+                    android:textColor="#ff6666"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
 
-            <Button
-                android:id="@+id/button_master_close"
-                android:layout_width="wrap_content"
-                android:layout_height="38dp"
-                android:background="@drawable/default_button_image"
-                android:paddingLeft="14dp"
-                android:paddingRight="14dp"
-                android:text="ALL CLOSE"
-                android:textColor="#ff6666"
-                android:textSize="12sp"
-                android:textStyle="bold" />
+                <Button
+                    android:id="@+id/button_sel_doors"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="3dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/default_button_image"
+                    android:padding="0dp"
+                    android:text="DOORS"
+                    android:textColor="#e0ca64"
+                    android:textSize="10sp" />
+
+                <Button
+                    android:id="@+id/button_sel_arms"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="3dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/default_button_image"
+                    android:padding="0dp"
+                    android:text="ARMS"
+                    android:textColor="#e0ca64"
+                    android:textSize="10sp" />
+
+                <Button
+                    android:id="@+id/button_sel_drawers"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="3dp"
+                    android:layout_weight="1.2"
+                    android:background="@drawable/default_button_image"
+                    android:padding="0dp"
+                    android:text="DRAWERS"
+                    android:textColor="#e0ca64"
+                    android:textSize="10sp" />
+
+                <Button
+                    android:id="@+id/button_sel_all"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="4dp"
+                    android:layout_weight="0.9"
+                    android:background="@drawable/default_button_image"
+                    android:padding="0dp"
+                    android:text="ALL"
+                    android:textColor="#e0ca64"
+                    android:textSize="10sp" />
+
+                <Button
+                    android:id="@+id/button_sync_dl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/sound_button_image"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                    android:text="SYNC"
+                    android:textColor="#6bc7eb"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- Row 2: Actions on Selected Panels + Master All Open/Close -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:layout_marginTop="3dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="4dp"
+                    android:text="SELECTED:"
+                    android:textColor="#6bc7eb"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/button_sel_open"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="3dp"
+                    android:layout_weight="1.1"
+                    android:background="@drawable/default_button_image"
+                    android:padding="0dp"
+                    android:text="OPEN"
+                    android:textColor="#00ff00"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/button_sel_close"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="3dp"
+                    android:layout_weight="1.1"
+                    android:background="@drawable/default_button_image"
+                    android:padding="0dp"
+                    android:text="CLOSE"
+                    android:textColor="#ff6666"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/button_sel_toggle"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="6dp"
+                    android:layout_weight="1.1"
+                    android:background="@drawable/default_button_image"
+                    android:padding="0dp"
+                    android:text="TOGGLE"
+                    android:textColor="#e0ca64"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/button_master_open"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="3dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/default_button_image"
+                    android:padding="0dp"
+                    android:text="ALL OPEN"
+                    android:textColor="#00ff00"
+                    android:textSize="10sp" />
+
+                <Button
+                    android:id="@+id/button_master_close"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/default_button_image"
+                    android:padding="0dp"
+                    android:text="ALL CLOSE"
+                    android:textColor="#ff6666"
+                    android:textSize="10sp" />
+            </LinearLayout>
         </LinearLayout>
 
-        <!-- Columns Container: Doors (Left) + Drawers (Right) -->
+        <!-- Columns Container: Doors & Arms (0-8) + Drawers (16-23) -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:orientation="horizontal" >
 
-            <!-- Left Box: 6 Doors / Panels -->
+            <!-- Left Box: 9 Doors & Utility Arms (Outputs 0-8) -->
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginRight="6dp"
-                android:layout_weight="0.45"
+                android:layout_marginRight="4dp"
+                android:layout_weight="0.52"
                 android:background="@drawable/frame_attempt_2"
                 android:orientation="vertical"
-                android:padding="8dp" >
+                android:padding="6dp" >
 
                 <!-- Doors Header Row -->
                 <LinearLayout
@@ -105,42 +259,76 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:paddingBottom="4dp" >
+                    android:paddingBottom="2dp" >
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="DOORS / PANELS (6)"
+                        android:text="DOORS &amp; ARMS (0-8)"
                         android:textColor="#6bc7eb"
-                        android:textSize="13sp"
+                        android:textSize="11sp"
                         android:textStyle="bold" />
 
                     <Button
                         android:id="@+id/button_doors_open"
                         android:layout_width="wrap_content"
-                        android:layout_height="30dp"
-                        android:layout_marginRight="4dp"
+                        android:layout_height="26dp"
+                        android:layout_marginRight="3dp"
                         android:background="@drawable/default_button_image"
-                        android:paddingLeft="8dp"
-                        android:paddingRight="8dp"
-                        android:text="OPEN ALL"
+                        android:paddingLeft="6dp"
+                        android:paddingRight="6dp"
+                        android:text="OPEN"
                         android:textColor="#e0ca64"
-                        android:textSize="10sp" />
+                        android:textSize="9sp" />
 
                     <Button
                         android:id="@+id/button_doors_close"
                         android:layout_width="wrap_content"
-                        android:layout_height="30dp"
+                        android:layout_height="26dp"
                         android:background="@drawable/default_button_image"
-                        android:paddingLeft="8dp"
-                        android:paddingRight="8dp"
-                        android:text="CLOSE ALL"
+                        android:paddingLeft="6dp"
+                        android:paddingRight="6dp"
+                        android:text="CLOSE"
+                        android:textColor="#e0ca64"
+                        android:textSize="9sp" />
+                </LinearLayout>
+
+                <!-- Row 1: 0 (FRONT LEFT DOOR) & 1 (FRONT RIGHT DOOR) -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal" >
+
+                    <Button
+                        android:id="@+id/button_body_0"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="2dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/default_button_image"
+                        android:ellipsize="end"
+                        android:singleLine="true"
+                        android:text="0: FRONT LEFT DOOR"
+                        android:textColor="#e0ca64"
+                        android:textSize="10sp" />
+
+                    <Button
+                        android:id="@+id/button_body_1"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="2dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/default_button_image"
+                        android:ellipsize="end"
+                        android:singleLine="true"
+                        android:text="1: FRONT RIGHT DOOR"
                         android:textColor="#e0ca64"
                         android:textSize="10sp" />
                 </LinearLayout>
 
-                <!-- Doors 1 & 2 -->
+                <!-- Row 2: 2 (BACK LEFT DOOR) & 3 (BACK RIGHT DOOR) -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
@@ -148,33 +336,33 @@
                     android:orientation="horizontal" >
 
                     <Button
-                        android:id="@+id/button_door_1"
+                        android:id="@+id/button_body_2"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_margin="3dp"
+                        android:layout_margin="2dp"
                         android:layout_weight="1"
                         android:background="@drawable/default_button_image"
                         android:ellipsize="end"
                         android:singleLine="true"
-                        android:text="Door 1 (UL)"
+                        android:text="2: BACK LEFT DOOR"
                         android:textColor="#e0ca64"
-                        android:textSize="11sp" />
+                        android:textSize="10sp" />
 
                     <Button
-                        android:id="@+id/button_door_2"
+                        android:id="@+id/button_body_3"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_margin="3dp"
+                        android:layout_margin="2dp"
                         android:layout_weight="1"
                         android:background="@drawable/default_button_image"
                         android:ellipsize="end"
                         android:singleLine="true"
-                        android:text="Door 2 (UR)"
+                        android:text="3: BACK RIGHT DOOR"
                         android:textColor="#e0ca64"
-                        android:textSize="11sp" />
+                        android:textSize="10sp" />
                 </LinearLayout>
 
-                <!-- Doors 3 & 4 -->
+                <!-- Row 3: 4 (CHARGE BAY) & 5 (DATA PORT) -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
@@ -182,33 +370,33 @@
                     android:orientation="horizontal" >
 
                     <Button
-                        android:id="@+id/button_door_3"
+                        android:id="@+id/button_body_4"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_margin="3dp"
+                        android:layout_margin="2dp"
                         android:layout_weight="1"
                         android:background="@drawable/default_button_image"
                         android:ellipsize="end"
                         android:singleLine="true"
-                        android:text="Door 3 (Mid L)"
+                        android:text="4: CHARGE BAY"
                         android:textColor="#e0ca64"
-                        android:textSize="11sp" />
+                        android:textSize="10sp" />
 
                     <Button
-                        android:id="@+id/button_door_4"
+                        android:id="@+id/button_body_5"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_margin="3dp"
+                        android:layout_margin="2dp"
                         android:layout_weight="1"
                         android:background="@drawable/default_button_image"
                         android:ellipsize="end"
                         android:singleLine="true"
-                        android:text="Door 4 (Mid R)"
+                        android:text="5: DATA PORT"
                         android:textColor="#e0ca64"
-                        android:textSize="11sp" />
+                        android:textSize="10sp" />
                 </LinearLayout>
 
-                <!-- Doors 5 & 6 -->
+                <!-- Row 4: 6 (SMALL DOOR) -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
@@ -216,42 +404,62 @@
                     android:orientation="horizontal" >
 
                     <Button
-                        android:id="@+id/button_door_5"
-                        android:layout_width="0dp"
+                        android:id="@+id/button_body_6"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_margin="3dp"
-                        android:layout_weight="1"
+                        android:layout_margin="2dp"
                         android:background="@drawable/default_button_image"
                         android:ellipsize="end"
                         android:singleLine="true"
-                        android:text="Door 5 (LL)"
+                        android:text="6: SMALL DOOR"
                         android:textColor="#e0ca64"
-                        android:textSize="11sp" />
+                        android:textSize="10sp" />
+                </LinearLayout>
+
+                <!-- Row 5: 7 (UPPER UTIL ARM) & 8 (LOWER UTIL ARM) -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal" >
 
                     <Button
-                        android:id="@+id/button_door_6"
+                        android:id="@+id/button_body_7"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_margin="3dp"
+                        android:layout_margin="2dp"
                         android:layout_weight="1"
                         android:background="@drawable/default_button_image"
                         android:ellipsize="end"
                         android:singleLine="true"
-                        android:text="Door 6 (LR)"
+                        android:text="7: UPPER UTIL ARM"
                         android:textColor="#e0ca64"
-                        android:textSize="11sp" />
+                        android:textSize="10sp" />
+
+                    <Button
+                        android:id="@+id/button_body_8"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="2dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/default_button_image"
+                        android:ellipsize="end"
+                        android:singleLine="true"
+                        android:text="8: LOWER UTIL ARM"
+                        android:textColor="#e0ca64"
+                        android:textSize="10sp" />
                 </LinearLayout>
             </LinearLayout>
 
-            <!-- Right Box: 8 Drawers -->
+            <!-- Right Box: 8 Drawers (Outputs 16-23) -->
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="6dp"
-                android:layout_weight="0.55"
+                android:layout_marginLeft="4dp"
+                android:layout_weight="0.48"
                 android:background="@drawable/frame_attempt_2"
                 android:orientation="vertical"
-                android:padding="8dp" >
+                android:padding="6dp" >
 
                 <!-- Drawers Header Row -->
                 <LinearLayout
@@ -259,42 +467,76 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:paddingBottom="4dp" >
+                    android:paddingBottom="2dp" >
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="BODY DRAWERS (8)"
+                        android:text="DRAWERS (16-23)"
                         android:textColor="#6bc7eb"
-                        android:textSize="13sp"
+                        android:textSize="11sp"
                         android:textStyle="bold" />
 
                     <Button
                         android:id="@+id/button_drawers_open"
                         android:layout_width="wrap_content"
-                        android:layout_height="30dp"
-                        android:layout_marginRight="4dp"
+                        android:layout_height="26dp"
+                        android:layout_marginRight="3dp"
                         android:background="@drawable/default_button_image"
-                        android:paddingLeft="8dp"
-                        android:paddingRight="8dp"
-                        android:text="OPEN ALL"
+                        android:paddingLeft="6dp"
+                        android:paddingRight="6dp"
+                        android:text="OPEN"
                         android:textColor="#e0ca64"
-                        android:textSize="10sp" />
+                        android:textSize="9sp" />
 
                     <Button
                         android:id="@+id/button_drawers_close"
                         android:layout_width="wrap_content"
-                        android:layout_height="30dp"
+                        android:layout_height="26dp"
                         android:background="@drawable/default_button_image"
-                        android:paddingLeft="8dp"
-                        android:paddingRight="8dp"
-                        android:text="CLOSE ALL"
+                        android:paddingLeft="6dp"
+                        android:paddingRight="6dp"
+                        android:text="CLOSE"
                         android:textColor="#e0ca64"
+                        android:textSize="9sp" />
+                </LinearLayout>
+
+                <!-- Drawers 1 (16) & 2 (17) -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal" >
+
+                    <Button
+                        android:id="@+id/button_body_16"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="2dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/sound_button_image"
+                        android:ellipsize="end"
+                        android:singleLine="true"
+                        android:text="16: DRAWER 1"
+                        android:textColor="#6bc7eb"
+                        android:textSize="10sp" />
+
+                    <Button
+                        android:id="@+id/button_body_17"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="2dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/sound_button_image"
+                        android:ellipsize="end"
+                        android:singleLine="true"
+                        android:text="17: DRAWER 2"
+                        android:textColor="#6bc7eb"
                         android:textSize="10sp" />
                 </LinearLayout>
 
-                <!-- Drawers 1 & 2 -->
+                <!-- Drawers 3 (18) & 4 (19) -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
@@ -302,7 +544,7 @@
                     android:orientation="horizontal" >
 
                     <Button
-                        android:id="@+id/button_drawer_1"
+                        android:id="@+id/button_body_18"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_margin="2dp"
@@ -310,12 +552,12 @@
                         android:background="@drawable/sound_button_image"
                         android:ellipsize="end"
                         android:singleLine="true"
-                        android:text="Drawer 1"
+                        android:text="18: DRAWER 3"
                         android:textColor="#6bc7eb"
-                        android:textSize="11sp" />
+                        android:textSize="10sp" />
 
                     <Button
-                        android:id="@+id/button_drawer_2"
+                        android:id="@+id/button_body_19"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_margin="2dp"
@@ -323,12 +565,12 @@
                         android:background="@drawable/sound_button_image"
                         android:ellipsize="end"
                         android:singleLine="true"
-                        android:text="Drawer 2"
+                        android:text="19: DRAWER 4"
                         android:textColor="#6bc7eb"
-                        android:textSize="11sp" />
+                        android:textSize="10sp" />
                 </LinearLayout>
 
-                <!-- Drawers 3 & 4 -->
+                <!-- Drawers 5 (20) & 6 (21) -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
@@ -336,7 +578,7 @@
                     android:orientation="horizontal" >
 
                     <Button
-                        android:id="@+id/button_drawer_3"
+                        android:id="@+id/button_body_20"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_margin="2dp"
@@ -344,12 +586,12 @@
                         android:background="@drawable/sound_button_image"
                         android:ellipsize="end"
                         android:singleLine="true"
-                        android:text="Drawer 3"
+                        android:text="20: DRAWER 5"
                         android:textColor="#6bc7eb"
-                        android:textSize="11sp" />
+                        android:textSize="10sp" />
 
                     <Button
-                        android:id="@+id/button_drawer_4"
+                        android:id="@+id/button_body_21"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_margin="2dp"
@@ -357,12 +599,12 @@
                         android:background="@drawable/sound_button_image"
                         android:ellipsize="end"
                         android:singleLine="true"
-                        android:text="Drawer 4"
+                        android:text="21: DRAWER 6"
                         android:textColor="#6bc7eb"
-                        android:textSize="11sp" />
+                        android:textSize="10sp" />
                 </LinearLayout>
 
-                <!-- Drawers 5 & 6 -->
+                <!-- Drawers 7 (22) & 8 (23) -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
@@ -370,7 +612,7 @@
                     android:orientation="horizontal" >
 
                     <Button
-                        android:id="@+id/button_drawer_5"
+                        android:id="@+id/button_body_22"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_margin="2dp"
@@ -378,12 +620,12 @@
                         android:background="@drawable/sound_button_image"
                         android:ellipsize="end"
                         android:singleLine="true"
-                        android:text="Drawer 5"
+                        android:text="22: DRAWER 7"
                         android:textColor="#6bc7eb"
-                        android:textSize="11sp" />
+                        android:textSize="10sp" />
 
                     <Button
-                        android:id="@+id/button_drawer_6"
+                        android:id="@+id/button_body_23"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_margin="2dp"
@@ -391,43 +633,9 @@
                         android:background="@drawable/sound_button_image"
                         android:ellipsize="end"
                         android:singleLine="true"
-                        android:text="Drawer 6"
+                        android:text="23: DRAWER 8"
                         android:textColor="#6bc7eb"
-                        android:textSize="11sp" />
-                </LinearLayout>
-
-                <!-- Drawers 7 & 8 -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:orientation="horizontal" >
-
-                    <Button
-                        android:id="@+id/button_drawer_7"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_margin="2dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/sound_button_image"
-                        android:ellipsize="end"
-                        android:singleLine="true"
-                        android:text="Drawer 7"
-                        android:textColor="#6bc7eb"
-                        android:textSize="11sp" />
-
-                    <Button
-                        android:id="@+id/button_drawer_8"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_margin="2dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/sound_button_image"
-                        android:ellipsize="end"
-                        android:singleLine="true"
-                        android:text="Drawer 8"
-                        android:textColor="#6bc7eb"
-                        android:textSize="11sp" />
+                        android:textSize="10sp" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
@@ -437,8 +645,10 @@
             android:id="@+id/body_status_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="Ready | Tap any door or drawer to control"
+            android:layout_marginTop="3dp"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:text="Tap panels on wireframe to select, or tap buttons to toggle (:BS00T - :BS23T)"
             android:textColor="#a0a0a0"
             android:textSize="11sp" />
     </LinearLayout>

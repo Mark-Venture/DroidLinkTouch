@@ -388,6 +388,7 @@ public class Main_activity extends Activity implements View.OnTouchListener {
 		PreferenceManager.setDefaultValues(this, R.xml.settings, true);
 		SharedPreferences prefs = PreferenceManager
 				.getDefaultSharedPreferences(this);
+		DroidLinkSync.ensureDomePanelPreferences(prefs);
 
 		// On first startup gives a Notification that this app was not created
 		// by CuriousMarc

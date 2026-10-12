@@ -21,6 +21,29 @@ public class DroidLinkSync {
         void onError(String errorMessage);
     }
 
+    public static void ensureDomePanelPreferences(SharedPreferences prefs) {
+        if (prefs == null) return;
+        int ver = prefs.getInt("dome_cmds_version", 0);
+        if (ver < 3) {
+            SharedPreferences.Editor editor = prefs.edit();
+            for (int i = 1; i <= 12; i++) {
+                String slotStr = String.format("%02d", i - 1);
+                String expectedOpen = ":DS" + slotStr + "O";
+                String expectedClose = ":DS" + slotStr + "C";
+                String curOpen = prefs.getString("dp" + i + "_open", "");
+                String curClose = prefs.getString("dp" + i + "_close", "");
+                if (curOpen.isEmpty() || !curOpen.endsWith("O") || curOpen.equals(":DS" + String.format("%02d", i))) {
+                    editor.putString("dp" + i + "_open", expectedOpen);
+                }
+                if (curClose.isEmpty() || !curClose.endsWith("C") || curClose.equals(":DS00") || curClose.equals(":CL" + String.format("%02d", i))) {
+                    editor.putString("dp" + i + "_close", expectedClose);
+                }
+            }
+            editor.putInt("dome_cmds_version", 3);
+            editor.apply();
+        }
+    }
+
     public static void syncFromDevice(final Context context, final String ipAddress, final SyncCallback callback) {
         new Thread(new Runnable() {
             @Override

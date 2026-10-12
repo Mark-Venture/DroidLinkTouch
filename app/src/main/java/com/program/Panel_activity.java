@@ -41,6 +41,7 @@ public class Panel_activity extends Activity
         
         PreferenceManager.setDefaultValues(this, R.xml.settings, true);
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        DroidLinkSync.ensureDomePanelPreferences(prefs);
         
         final string_parser ste = new string_parser ();
         
@@ -987,6 +988,9 @@ public class WizardPagerAdapter extends PagerAdapter {
 				String slotStr = String.format("%02d", i - 1);
 				String defaultCmd = isOpen ? (":DS" + slotStr + "O") : (":DS" + slotStr + "C");
 				String cmd = prefs.getString(key, defaultCmd);
+				if (cmd == null || cmd.trim().isEmpty() || (!cmd.endsWith("O") && !cmd.endsWith("C") && !cmd.startsWith(":OP") && !cmd.startsWith(":CL"))) {
+					cmd = defaultCmd;
+				}
 				if (cmd != null && !cmd.trim().isEmpty()) {
 					commands.add(cmd.trim());
 					if (panelNames.length() > 0) panelNames.append(", ");

@@ -3598,11 +3598,6 @@ public class Main_activity extends Activity implements View.OnTouchListener {
 					"prefUserPort", "2000"));
 			break;
 
-		case R.id.button_body_panels:
-			Intent nextScreenBody = new Intent(Main_activity.this,
-					Body_activity.class);
-			startActivity(nextScreenBody);
-			break;
 		default:
 			break;
 		}

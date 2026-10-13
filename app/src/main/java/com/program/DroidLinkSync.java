@@ -47,7 +47,7 @@ public class DroidLinkSync {
     public static void ensureBodyPanelPreferences(SharedPreferences prefs) {
         if (prefs == null) return;
         int ver = prefs.getInt("body_cmds_version", 0);
-        if (ver < 2) {
+        if (ver < 3) {
             SharedPreferences.Editor editor = prefs.edit();
             for (int i = 0; i < Body_activity.COUNT; i++) {
                 int out = Body_activity.OUTPUT_NUMS[i];
@@ -69,7 +69,16 @@ public class DroidLinkSync {
                     editor.putString("bp_" + out + "_close", defClose);
                 }
             }
-            editor.putInt("body_cmds_version", 2);
+            for (int s = 0; s < Body_activity.SEQ_COUNT; s++) {
+                int keyNum = s + 1;
+                if (!prefs.contains("bseq" + keyNum + "_name")) {
+                    editor.putString("bseq" + keyNum + "_name", Body_activity.DEFAULT_SEQ_NAMES[s]);
+                }
+                if (!prefs.contains("bseq" + keyNum + "_cmd")) {
+                    editor.putString("bseq" + keyNum + "_cmd", Body_activity.DEFAULT_SEQ_CMDS[s]);
+                }
+            }
+            editor.putInt("body_cmds_version", 3);
             editor.apply();
         }
     }
@@ -119,11 +128,10 @@ public class DroidLinkSync {
                             editor.putString("mk" + keyNum + "_name", label);
                             editor.putString("mk" + keyNum, cmd);
 
-                            if (i < Body_activity.COUNT) {
-                                int out = Body_activity.OUTPUT_NUMS[i];
-                                editor.putString("bp_" + out + "_name", label);
+                            if (i < Body_activity.SEQ_COUNT) {
+                                editor.putString("bseq" + keyNum + "_name", label);
                                 if (cmd != null && !cmd.trim().isEmpty()) {
-                                    editor.putString("bp_" + out + "_cmd", cmd.trim());
+                                    editor.putString("bseq" + keyNum + "_cmd", cmd.trim());
                                 }
                             }
 

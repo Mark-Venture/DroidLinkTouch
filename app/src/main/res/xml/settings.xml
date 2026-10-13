@@ -3169,7 +3169,129 @@
             android:key="setB"
             android:persistent="false"
             android:title="Body Panels &amp; Drawers Screen" >
-            <PreferenceScreen android:title="BODY DOORS &amp; ARMS (Outputs 0-8)" >
+            <PreferenceScreen android:title="BODY SEQUENCES (12 Keys)" >
+                <PreferenceCategory android:title="SEQUENCE KEY 1" >
+                    <EditTextPreference
+                        android:defaultValue="UTIL ARMS WAVE"
+                        android:key="bseq1_name"
+                        android:title="NAME" />
+                    <EditTextPreference
+                        android:defaultValue=":BS07T:BS08T"
+                        android:key="bseq1_cmd"
+                        android:title="ACTION" />
+                </PreferenceCategory>
+                <PreferenceCategory android:title="SEQUENCE KEY 2" >
+                    <EditTextPreference
+                        android:defaultValue="FRONT DOORS"
+                        android:key="bseq2_name"
+                        android:title="NAME" />
+                    <EditTextPreference
+                        android:defaultValue=":BS00T:BS01T"
+                        android:key="bseq2_cmd"
+                        android:title="ACTION" />
+                </PreferenceCategory>
+                <PreferenceCategory android:title="SEQUENCE KEY 3" >
+                    <EditTextPreference
+                        android:defaultValue="REAR DOORS"
+                        android:key="bseq3_name"
+                        android:title="NAME" />
+                    <EditTextPreference
+                        android:defaultValue=":BS02T:BS03T"
+                        android:key="bseq3_cmd"
+                        android:title="ACTION" />
+                </PreferenceCategory>
+                <PreferenceCategory android:title="SEQUENCE KEY 4" >
+                    <EditTextPreference
+                        android:defaultValue="DOORS OPEN"
+                        android:key="bseq4_name"
+                        android:title="NAME" />
+                    <EditTextPreference
+                        android:defaultValue=":BS00O:BS01O:BS02O:BS03O:BS04O:BS05O:BS06O"
+                        android:key="bseq4_cmd"
+                        android:title="ACTION" />
+                </PreferenceCategory>
+                <PreferenceCategory android:title="SEQUENCE KEY 5" >
+                    <EditTextPreference
+                        android:defaultValue="DOORS CLOSE"
+                        android:key="bseq5_name"
+                        android:title="NAME" />
+                    <EditTextPreference
+                        android:defaultValue=":BS00C:BS01C:BS02C:BS03C:BS04C:BS05C:BS06C"
+                        android:key="bseq5_cmd"
+                        android:title="ACTION" />
+                </PreferenceCategory>
+                <PreferenceCategory android:title="SEQUENCE KEY 6" >
+                    <EditTextPreference
+                        android:defaultValue="DRAWERS 1-3"
+                        android:key="bseq6_name"
+                        android:title="NAME" />
+                    <EditTextPreference
+                        android:defaultValue=":BS16T:BS17T:BS18T"
+                        android:key="bseq6_cmd"
+                        android:title="ACTION" />
+                </PreferenceCategory>
+                <PreferenceCategory android:title="SEQUENCE KEY 7" >
+                    <EditTextPreference
+                        android:defaultValue="DRAWERS 4-7"
+                        android:key="bseq7_name"
+                        android:title="NAME" />
+                    <EditTextPreference
+                        android:defaultValue=":BS19T:BS20T:BS21T:BS22T"
+                        android:key="bseq7_cmd"
+                        android:title="ACTION" />
+                </PreferenceCategory>
+                <PreferenceCategory android:title="SEQUENCE KEY 8" >
+                    <EditTextPreference
+                        android:defaultValue="DRAWERS OPEN"
+                        android:key="bseq8_name"
+                        android:title="NAME" />
+                    <EditTextPreference
+                        android:defaultValue=":BS16O:BS17O:BS18O:BS19O:BS20O:BS21O:BS22O:BS23O"
+                        android:key="bseq8_cmd"
+                        android:title="ACTION" />
+                </PreferenceCategory>
+                <PreferenceCategory android:title="SEQUENCE KEY 9" >
+                    <EditTextPreference
+                        android:defaultValue="DRAWERS CLOSE"
+                        android:key="bseq9_name"
+                        android:title="NAME" />
+                    <EditTextPreference
+                        android:defaultValue=":BS16C:BS17C:BS18C:BS19C:BS20C:BS21C:BS22C:BS23C"
+                        android:key="bseq9_cmd"
+                        android:title="ACTION" />
+                </PreferenceCategory>
+                <PreferenceCategory android:title="SEQUENCE KEY 10" >
+                    <EditTextPreference
+                        android:defaultValue="SEQ 10"
+                        android:key="bseq10_name"
+                        android:title="NAME" />
+                    <EditTextPreference
+                        android:defaultValue=":SE10"
+                        android:key="bseq10_cmd"
+                        android:title="ACTION" />
+                </PreferenceCategory>
+                <PreferenceCategory android:title="SEQUENCE KEY 11" >
+                    <EditTextPreference
+                        android:defaultValue="SEQ 11"
+                        android:key="bseq11_name"
+                        android:title="NAME" />
+                    <EditTextPreference
+                        android:defaultValue=":SE11"
+                        android:key="bseq11_cmd"
+                        android:title="ACTION" />
+                </PreferenceCategory>
+                <PreferenceCategory android:title="SEQUENCE KEY 12" >
+                    <EditTextPreference
+                        android:defaultValue="SEQ 12"
+                        android:key="bseq12_name"
+                        android:title="NAME" />
+                    <EditTextPreference
+                        android:defaultValue=":SE12"
+                        android:key="bseq12_cmd"
+                        android:title="ACTION" />
+                </PreferenceCategory>
+            </PreferenceScreen>
+            <PreferenceScreen android:title="WIREFRAME DOORS &amp; ARMS (Outputs 0-8)" >
                 <PreferenceCategory android:title="0: FRONT LEFT DOOR (FRONT_LEFT_DOOR)" >
                     <EditTextPreference
                         android:defaultValue="FRONT LEFT DOOR"

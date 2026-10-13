@@ -30,8 +30,9 @@ import java.util.List;
 public class Body_activity extends Activity implements View.OnTouchListener {
 
     public static final int COUNT = 17;
+    public static final int SEQ_COUNT = 12;
 
-    // DefaultOutput numbers from user specification
+    // DefaultOutput numbers from user specification for wireframe mechanisms
     public static final int[] OUTPUT_NUMS = {
             0, 1, 2, 3, 4, 5, 6, 7, 8,
             16, 17, 18, 19, 20, 21, 22, 23
@@ -49,6 +50,29 @@ public class Body_activity extends Activity implements View.OnTouchListener {
             "CHARGE BAY", "DATA PORT", "SMALL DOOR", "UPPER UTIL ARM", "LOWER UTIL ARM",
             "DRAWER 1", "DRAWER 2", "DRAWER 3", "DRAWER 4",
             "DRAWER 5", "DRAWER 6", "DRAWER 7", "DRAWER 8"
+    };
+
+    // Default labels and commands for the 12 customizable Body Sequence buttons
+    public static final String[] DEFAULT_SEQ_NAMES = {
+            "UTIL ARMS WAVE", "FRONT DOORS", "REAR DOORS",
+            "DOORS OPEN", "DOORS CLOSE", "DRAWERS 1-3",
+            "DRAWERS 4-7", "DRAWERS OPEN", "DRAWERS CLOSE",
+            "SEQ 10", "SEQ 11", "SEQ 12"
+    };
+
+    public static final String[] DEFAULT_SEQ_CMDS = {
+            ":BS07T:BS08T",
+            ":BS00T:BS01T",
+            ":BS02T:BS03T",
+            ":BS00O:BS01O:BS02O:BS03O:BS04O:BS05O:BS06O",
+            ":BS00C:BS01C:BS02C:BS03C:BS04C:BS05C:BS06C",
+            ":BS16T:BS17T:BS18T",
+            ":BS19T:BS20T:BS21T:BS22T",
+            ":BS16O:BS17O:BS18O:BS19O:BS20O:BS21O:BS22O:BS23O",
+            ":BS16C:BS17C:BS18C:BS19C:BS20C:BS21C:BS22C:BS23C",
+            ":SE10",
+            ":SE11",
+            ":SE12"
     };
 
     // Panel bounding boxes in 580x720 wireframe coordinate space: {x1, y1, x2, y2}
@@ -93,16 +117,14 @@ public class Body_activity extends Activity implements View.OnTouchListener {
             {506, 635, 19, 432, 635}   // 23: DRAWER 8
     };
 
-    private static final int[] BUTTON_IDS = {
-            R.id.button_body_0, R.id.button_body_1, R.id.button_body_2, R.id.button_body_3,
-            R.id.button_body_4, R.id.button_body_5, R.id.button_body_6, R.id.button_body_7,
-            R.id.button_body_8,
-            R.id.button_body_16, R.id.button_body_17, R.id.button_body_18, R.id.button_body_19,
-            R.id.button_body_20, R.id.button_body_21, R.id.button_body_22, R.id.button_body_23
+    private static final int[] SEQ_BUTTON_IDS = {
+            R.id.button_bseq_1, R.id.button_bseq_2, R.id.button_bseq_3,
+            R.id.button_bseq_4, R.id.button_bseq_5, R.id.button_bseq_6,
+            R.id.button_bseq_7, R.id.button_bseq_8, R.id.button_bseq_9,
+            R.id.button_bseq_10, R.id.button_bseq_11, R.id.button_bseq_12
     };
 
-    private final Button[] bodyButtons = new Button[COUNT];
-    private final boolean[] isOpenState = new boolean[COUNT];
+    private final Button[] seqButtons = new Button[SEQ_COUNT];
     private final boolean[] selected = new boolean[COUNT];
 
     private ImageView wireframeView;
@@ -156,15 +178,15 @@ public class Body_activity extends Activity implements View.OnTouchListener {
             });
         }
 
-        // Initialize all 17 mechanism buttons
-        for (int i = 0; i < COUNT; i++) {
+        // Initialize all 12 customizable Sequence buttons
+        for (int i = 0; i < SEQ_COUNT; i++) {
             final int index = i;
-            bodyButtons[i] = (Button) findViewById(BUTTON_IDS[i]);
-            if (bodyButtons[i] != null) {
-                bodyButtons[i].setOnClickListener(new View.OnClickListener() {
+            seqButtons[i] = (Button) findViewById(SEQ_BUTTON_IDS[i]);
+            if (seqButtons[i] != null) {
+                seqButtons[i].setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        triggerMechanismToggle(index);
+                        triggerSequence(index);
                     }
                 });
             }
@@ -252,7 +274,7 @@ public class Body_activity extends Activity implements View.OnTouchListener {
             });
         }
 
-        // Group & Master Open/Close Controls
+        // Master All Open/Close Controls
         Button masterOpen = (Button) findViewById(R.id.button_master_open);
         if (masterOpen != null) {
             masterOpen.setOnClickListener(new View.OnClickListener() {
@@ -269,46 +291,6 @@ public class Body_activity extends Activity implements View.OnTouchListener {
                 @Override
                 public void onClick(View v) {
                     executeRangeAction(0, COUNT - 1, 'C', "All Body Doors & Drawers");
-                }
-            });
-        }
-
-        Button doorsOpen = (Button) findViewById(R.id.button_doors_open);
-        if (doorsOpen != null) {
-            doorsOpen.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    executeRangeAction(0, 8, 'O', "Doors & Arms (0-8)");
-                }
-            });
-        }
-
-        Button doorsClose = (Button) findViewById(R.id.button_doors_close);
-        if (doorsClose != null) {
-            doorsClose.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    executeRangeAction(0, 8, 'C', "Doors & Arms (0-8)");
-                }
-            });
-        }
-
-        Button drawersOpen = (Button) findViewById(R.id.button_drawers_open);
-        if (drawersOpen != null) {
-            drawersOpen.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    executeRangeAction(9, COUNT - 1, 'O', "Drawers (16-23)");
-                }
-            });
-        }
-
-        Button drawersClose = (Button) findViewById(R.id.button_drawers_close);
-        if (drawersClose != null) {
-            drawersClose.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    executeRangeAction(9, COUNT - 1, 'C', "Drawers (16-23)");
                 }
             });
         }
@@ -346,7 +328,6 @@ public class Body_activity extends Activity implements View.OnTouchListener {
             if (hitIndex >= 0 && hitIndex < COUNT) {
                 selected[hitIndex] = !selected[hitIndex];
                 updateHighlights();
-                loadLabels();
                 updateSelectionStatus();
             }
             return true;
@@ -418,7 +399,6 @@ public class Body_activity extends Activity implements View.OnTouchListener {
             }
         }
         updateHighlights();
-        loadLabels();
         updateSelectionStatus();
     }
 
@@ -434,7 +414,7 @@ public class Body_activity extends Activity implements View.OnTouchListener {
             }
         }
         if (count == 0) {
-            statusText.setText("No panels selected | Tap wireframe to select or tap buttons on right");
+            statusText.setText("No panels selected | Tap wireframe to select or tap a Sequence button");
         } else {
             statusText.setText("Selected (" + count + "): [" + sb.toString() + "] -> Tap OPEN, CLOSE, or TOGGLE");
         }
@@ -511,11 +491,6 @@ public class Body_activity extends Activity implements View.OnTouchListener {
         highlightView.setImageBitmap(bmp);
     }
 
-    private String getMechanismName(int index) {
-        int out = OUTPUT_NUMS[index];
-        return prefs.getString("bp_" + out + "_name", DEFAULT_NAMES[index]);
-    }
-
     private String getMechanismCmd(int index, char mode) {
         int out = OUTPUT_NUMS[index];
         if (mode == 'O') {
@@ -534,36 +509,34 @@ public class Body_activity extends Activity implements View.OnTouchListener {
     }
 
     private void loadLabels() {
-        for (int i = 0; i < COUNT; i++) {
-            if (bodyButtons[i] != null) {
-                int out = OUTPUT_NUMS[i];
-                String name = getMechanismName(i);
-                String prefix = out + ": ";
-                String display = name.startsWith(prefix) ? name : (prefix + name);
-                if (isOpenState[i]) {
-                    display = display + " [OPEN]";
-                }
-                bodyButtons[i].setText(display);
-                if (selected[i]) {
-                    bodyButtons[i].setTextColor(Color.parseColor("#00ff00"));
-                } else if (out <= 8) {
-                    bodyButtons[i].setTextColor(Color.parseColor("#e0ca64"));
-                } else {
-                    bodyButtons[i].setTextColor(Color.parseColor("#6bc7eb"));
-                }
+        for (int i = 0; i < SEQ_COUNT; i++) {
+            if (seqButtons[i] != null) {
+                int keyNum = i + 1;
+                String name = prefs.getString("bseq" + keyNum + "_name", DEFAULT_SEQ_NAMES[i]);
+                seqButtons[i].setText(name);
             }
         }
     }
 
-    private void triggerMechanismToggle(int index) {
-        String cmd = getMechanismCmd(index, 'T');
-        String name = getMechanismName(index);
-        isOpenState[index] = !isOpenState[index];
-        stringParser.select_string(cmd);
-        if (statusText != null) {
-            statusText.setText("Sent: " + cmd + " (" + OUTPUT_NUMS[index] + ": " + name + ")");
+    private void triggerSequence(int index) {
+        int keyNum = index + 1;
+        String name = prefs.getString("bseq" + keyNum + "_name", DEFAULT_SEQ_NAMES[index]);
+        String cmd = prefs.getString("bseq" + keyNum + "_cmd", DEFAULT_SEQ_CMDS[index]);
+        if (cmd == null || cmd.trim().isEmpty()) {
+            Toast.makeText(this, "No sequence command assigned to " + name, Toast.LENGTH_SHORT).show();
+            return;
         }
-        loadLabels();
+        final String cleanCmd = cmd.trim();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                stringParser.select_string(cleanCmd);
+            }
+        }).start();
+        if (statusText != null) {
+            statusText.setText("Sent Sequence: " + name + " (" + cleanCmd + ")");
+        }
+        Toast.makeText(this, name + " (" + cleanCmd + ")", Toast.LENGTH_SHORT).show();
     }
 
     private void executeSelectedAction(char mode) {
@@ -578,14 +551,6 @@ public class Body_activity extends Activity implements View.OnTouchListener {
                 commands.add(cmd);
                 if (names.length() > 0) names.append(", ");
                 names.append(OUTPUT_NUMS[i]);
-
-                if (mode == 'O') {
-                    isOpenState[i] = true;
-                } else if (mode == 'C') {
-                    isOpenState[i] = false;
-                } else {
-                    isOpenState[i] = !isOpenState[i];
-                }
             }
         }
 
@@ -595,23 +560,14 @@ public class Body_activity extends Activity implements View.OnTouchListener {
         }
 
         sendChainedCommands(commands, mode, "Panels [" + names.toString() + "]");
-        loadLabels();
     }
 
     private void executeRangeAction(int startIdx, int endIdx, char mode, String groupLabel) {
         List<String> commands = new ArrayList<>();
         for (int i = startIdx; i <= endIdx; i++) {
             commands.add(getMechanismCmd(i, mode));
-            if (mode == 'O') {
-                isOpenState[i] = true;
-            } else if (mode == 'C') {
-                isOpenState[i] = false;
-            } else {
-                isOpenState[i] = !isOpenState[i];
-            }
         }
         sendChainedCommands(commands, mode, groupLabel);
-        loadLabels();
     }
 
     private void sendChainedCommands(List<String> commands, char mode, String labelSummary) {
@@ -680,7 +636,7 @@ public class Body_activity extends Activity implements View.OnTouchListener {
                         }
                         loadLabels();
                         if (statusText != null) {
-                            statusText.setText("Sync successful! Labels updated from DroidLink.");
+                            statusText.setText("Sync successful! Sequence buttons updated from DroidLink.");
                         }
                         Toast.makeText(Body_activity.this, "Synced with DroidLink: " + summary, Toast.LENGTH_LONG).show();
                     }

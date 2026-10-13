@@ -3,22 +3,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_main"
-    android:orientation="horizontal" >
+    android:orientation="horizontal"
+    android:padding="6dp" >
 
+    <!-- Home / Return Button -->
     <ImageButton
         android:id="@+id/home_Button"
         android:layout_width="0dp"
-        android:layout_height="120dp"
-        android:layout_marginLeft="10dp"
-        android:layout_weight="0.1"
+        android:layout_height="110dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginTop="4dp"
+        android:layout_weight="0.07"
         android:background="@null"
         android:scaleType="fitStart"
         android:src="@drawable/button_image" />
 
+    <!-- Left Interactive Dome Wireframe Graphic -->
     <FrameLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="0.4" >
+        android:layout_marginRight="6dp"
+        android:layout_weight="0.35" >
 
         <ImageView
             android:id="@+id/imageView_Selection_Panels"
@@ -118,137 +124,225 @@
             android:visibility="invisible" />
     </FrameLayout>
 
-    <views.SoundViewGroup
-        android:id="@+id/page_twoS"
+    <!-- Right Control Area (Matching Body Screen Top Bar + Sequence Pages Below) -->
+    <LinearLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_marginBottom="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_weight="0.5" >
+        android:layout_weight="0.58"
+        android:orientation="vertical" >
 
-        <ImageButton
-            android:id="@+id/button_non"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginRight="5dp"
-            android:background="@null"
-            android:baselineAligned="false"
-            android:scaleType="fitEnd"
-            android:src="@drawable/none_button_image"
-            android:textColor="#ff0000"
-            android:textSize="12sp" />
-
+        <!-- Top Selection & Action Bar for Dome Wireframe (Double Height + Enlarged Text) -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="6dp"
             android:background="@drawable/frame_attempt_2"
-            android:orientation="vertical" >
+            android:orientation="vertical"
+            android:padding="8dp" >
 
-            <TextView
-                android:id="@+id/textView1"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginBottom="5dp"
-                android:layout_marginLeft="5dp"
-                android:layout_weight="0.25"
-                android:text="SELECT PANELS:"
-                android:textColor="#f6b93f"
-                android:textSize="12sp" />
-
+            <!-- Row 1: Quick Select Buttons + Sync (60dp height) -->
             <LinearLayout
                 android:id="@+id/panel_selecter_lay"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_weight="0.75"
-                android:baselineAligned="false" >
+                android:layout_height="60dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/textView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="6dp"
+                    android:text="SELECT:"
+                    android:textColor="#f6b93f"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/button_non"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="4dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/default_button_image"
+                    android:padding="2dp"
+                    android:text="NONE"
+                    android:textColor="#ff6666"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
 
                 <Button
                     android:id="@+id/button_but"
-                    style="?android:attr/borderlessButtonStyle"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginRight="2dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="4dp"
                     android:layout_weight="1"
                     android:background="@drawable/default_button_image"
-                    android:baselineAligned="false"
+                    android:padding="2dp"
                     android:text="BOT"
-                    android:textColor="#e0ca64" />
+                    android:textColor="#e0ca64"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
 
                 <Button
                     android:id="@+id/button_top"
-                    style="?android:attr/borderlessButtonStyle"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="2dp"
-                    android:layout_marginRight="2dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="4dp"
                     android:layout_weight="1"
                     android:background="@drawable/default_button_image"
-                    android:baselineAligned="false"
+                    android:padding="2dp"
                     android:text="TOP"
-                    android:textColor="#e0ca64" />
+                    android:textColor="#e0ca64"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
 
                 <Button
                     android:id="@+id/button_all"
-                    style="?android:attr/borderlessButtonStyle"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="2dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="4dp"
                     android:layout_weight="1"
                     android:background="@drawable/default_button_image"
-                    android:baselineAligned="false"
+                    android:padding="2dp"
                     android:text="ALL"
-                    android:textColor="#e0ca64" />
+                    android:textColor="#e0ca64"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/button_sync_dl"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/sound_button_image"
+                    android:padding="2dp"
+                    android:text="SYNC"
+                    android:textColor="#6bc7eb"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- Row 2: Actions on Selected Dome Panels + Master All Open/Close (64dp height) -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="64dp"
+                android:layout_marginTop="6dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/label_dome_selected_row"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="6dp"
+                    android:text="SELECTED:"
+                    android:textColor="#6bc7eb"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/button_sel_open"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="4dp"
+                    android:layout_weight="1.05"
+                    android:background="@drawable/default_button_image"
+                    android:padding="2dp"
+                    android:text="OPEN"
+                    android:textColor="#00ff00"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/button_sel_close"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="4dp"
+                    android:layout_weight="1.05"
+                    android:background="@drawable/default_button_image"
+                    android:padding="2dp"
+                    android:text="CLOSE"
+                    android:textColor="#ff6666"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/button_sel_toggle"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="6dp"
+                    android:layout_weight="1.15"
+                    android:background="@drawable/default_button_image"
+                    android:padding="2dp"
+                    android:text="TOGGLE"
+                    android:textColor="#e0ca64"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/button_master_open"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="4dp"
+                    android:layout_weight="1.15"
+                    android:background="@drawable/default_button_image"
+                    android:padding="2dp"
+                    android:text="ALL OPEN"
+                    android:textColor="#00ff00"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/button_master_close"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.15"
+                    android:background="@drawable/default_button_image"
+                    android:padding="2dp"
+                    android:text="ALL CLOSE"
+                    android:textColor="#ff6666"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
             </LinearLayout>
         </LinearLayout>
 
+        <!-- Lower Pager for Dome Sequences / Panel Control -->
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/pager"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="10dp" >
+            android:layout_height="0dp"
+            android:layout_weight="1" >
 
             <TableLayout
                 android:id="@+id/page_one"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/frame_attempt_2" >
+                android:background="@drawable/frame_attempt_2"
+                android:padding="6dp" >
 
                 <TableRow
                     android:id="@+id/tableRow0"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_weight="0.1"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:layout_marginLeft="4dp"
                     android:baselineAligned="false" >
 
                     <TextView
                         android:id="@+id/textView1P"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="PANEL CONTROL:"
+                        android:layout_height="wrap_content"
+                        android:text="PANEL CONTROL (PAGE 1):"
                         android:textColor="#f6b93f"
-                        android:textSize="18sp" />
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
                 </TableRow>
 
                 <TableRow
                     android:id="@+id/tableRow1"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
                     android:layout_weight="1"
                     android:baselineAligned="false" >
 
@@ -257,50 +351,42 @@
                         style="?android:attr/borderlessButtonStyle"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_marginBottom="5dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_marginTop="5dp"
+                        android:layout_margin="4dp"
                         android:layout_weight="1"
                         android:background="@drawable/default_button_image"
                         android:text="ALL OPEN"
-                        android:textColor="#e0ca64" />
+                        android:textColor="#e0ca64"
+                        android:textSize="14sp" />
 
                     <Button
                         android:id="@+id/buttons2"
                         style="?android:attr/borderlessButtonStyle"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_marginBottom="5dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_marginTop="5dp"
+                        android:layout_margin="4dp"
                         android:layout_weight="1"
                         android:background="@drawable/default_button_image"
                         android:text="ALL CLOSE"
-                        android:textColor="#e0ca64" />
+                        android:textColor="#e0ca64"
+                        android:textSize="14sp" />
 
                     <Button
                         android:id="@+id/buttons3"
                         style="?android:attr/borderlessButtonStyle"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_marginBottom="5dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_marginTop="5dp"
+                        android:layout_margin="4dp"
                         android:layout_weight="1"
                         android:background="@drawable/default_button_image"
                         android:text="ALL OFF"
-                        android:textColor="#e0ca64" />
+                        android:textColor="#e0ca64"
+                        android:textSize="14sp" />
                 </TableRow>
 
                 <TableRow
                     android:id="@+id/tableRow2"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
                     android:layout_weight="1"
                     android:baselineAligned="false" >
 
@@ -309,50 +395,42 @@
                         style="?android:attr/borderlessButtonStyle"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_marginBottom="5dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_marginTop="5dp"
+                        android:layout_margin="4dp"
                         android:layout_weight="1"
                         android:background="@drawable/default_button_image"
                         android:text="OPEN"
-                        android:textColor="#e0ca64" />
+                        android:textColor="#e0ca64"
+                        android:textSize="14sp" />
 
                     <Button
                         android:id="@+id/buttons5"
                         style="?android:attr/borderlessButtonStyle"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_marginBottom="5dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_marginTop="5dp"
+                        android:layout_margin="4dp"
                         android:layout_weight="1"
                         android:background="@drawable/default_button_image"
                         android:text="CLOSE"
-                        android:textColor="#e0ca64" />
+                        android:textColor="#e0ca64"
+                        android:textSize="14sp" />
 
                     <Button
                         android:id="@+id/buttons6"
                         style="?android:attr/borderlessButtonStyle"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_marginBottom="5dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_marginTop="5dp"
+                        android:layout_margin="4dp"
                         android:layout_weight="1"
                         android:background="@drawable/default_button_image"
                         android:text="SERVO OFF"
-                        android:textColor="#e0ca64" />
+                        android:textColor="#e0ca64"
+                        android:textSize="14sp" />
                 </TableRow>
 
                 <TableRow
                     android:id="@+id/tableRow3"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
                     android:layout_weight="1"
                     android:baselineAligned="false" >
 
@@ -361,50 +439,42 @@
                         style="?android:attr/borderlessButtonStyle"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_marginBottom="5dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_marginTop="5dp"
+                        android:layout_margin="4dp"
                         android:layout_weight="1"
                         android:background="@drawable/default_button_image"
                         android:text="RC ON"
-                        android:textColor="#e0ca64" />
+                        android:textColor="#e0ca64"
+                        android:textSize="14sp" />
 
                     <Button
                         android:id="@+id/buttons8"
                         style="?android:attr/borderlessButtonStyle"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_marginBottom="5dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_marginTop="5dp"
+                        android:layout_margin="4dp"
                         android:layout_weight="1"
                         android:background="@drawable/default_button_image"
                         android:text="RC HOLD"
-                        android:textColor="#e0ca64" />
+                        android:textColor="#e0ca64"
+                        android:textSize="14sp" />
 
                     <Button
                         android:id="@+id/buttons9"
                         style="?android:attr/borderlessButtonStyle"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_marginBottom="5dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_marginTop="5dp"
+                        android:layout_margin="4dp"
                         android:layout_weight="1"
                         android:background="@drawable/default_button_image"
                         android:text="RC OFF"
-                        android:textColor="#e0ca64" />
+                        android:textColor="#e0ca64"
+                        android:textSize="14sp" />
                 </TableRow>
 
                 <TableRow
                     android:id="@+id/tableRow4"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
                     android:layout_weight="1"
                     android:baselineAligned="false" >
 
@@ -413,42 +483,36 @@
                         style="?android:attr/borderlessButtonStyle"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_marginBottom="5dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_marginTop="5dp"
+                        android:layout_margin="4dp"
                         android:layout_weight="1"
                         android:background="@drawable/default_button_image"
                         android:text="ALL RC"
-                        android:textColor="#e0ca64" />
+                        android:textColor="#e0ca64"
+                        android:textSize="14sp" />
 
                     <Button
                         android:id="@+id/buttons11"
                         style="?android:attr/borderlessButtonStyle"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_marginBottom="5dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_marginTop="5dp"
+                        android:layout_margin="4dp"
                         android:layout_weight="1"
                         android:background="@drawable/default_button_image"
                         android:text="TOP RC"
-                        android:textColor="#e0ca64" />
+                        android:textColor="#e0ca64"
+                        android:textSize="14sp" />
 
                     <Button
                         android:id="@+id/buttons12"
                         style="?android:attr/borderlessButtonStyle"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_marginBottom="5dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_marginTop="5dp"
+                        android:layout_margin="4dp"
                         android:layout_weight="1"
                         android:background="@drawable/default_button_image"
                         android:text="> >"
-                        android:textColor="#00ff00" />
+                        android:textColor="#00ff00"
+                        android:textSize="14sp" />
                 </TableRow>
             </TableLayout>
 
@@ -456,35 +520,31 @@
                 android:id="@+id/page_two"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/frame_attempt_2" >
+                android:background="@drawable/frame_attempt_2"
+                android:padding="6dp" >
 
                 <TableRow
                     android:id="@+id/tableRow0P"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_weight="0.1"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:layout_marginLeft="4dp"
                     android:baselineAligned="false" >
 
                     <TextView
                         android:id="@+id/textView1P2"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="PANEL CONTROL:"
+                        android:layout_height="wrap_content"
+                        android:text="PANEL CONTROL (PAGE 2):"
                         android:textColor="#f6b93f"
-                        android:textSize="18sp" />
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
                 </TableRow>
 
                 <TableRow
                     android:id="@+id/tableRow1P"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
                     android:layout_weight="1"
                     android:baselineAligned="false" >
 
@@ -493,50 +553,42 @@
                         style="?android:attr/borderlessButtonStyle"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_marginBottom="5dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_marginTop="5dp"
+                        android:layout_margin="4dp"
                         android:layout_weight="1"
                         android:background="@drawable/default_button_image"
                         android:text="STOP SEQ."
-                        android:textColor="#e0ca64" />
+                        android:textColor="#e0ca64"
+                        android:textSize="14sp" />
 
                     <Button
                         android:id="@+id/buttons14"
                         style="?android:attr/borderlessButtonStyle"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_marginBottom="5dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_marginTop="5dp"
+                        android:layout_margin="4dp"
                         android:layout_weight="1"
                         android:background="@drawable/default_button_image"
                         android:text="SCREAM"
-                        android:textColor="#e0ca64" />
+                        android:textColor="#e0ca64"
+                        android:textSize="14sp" />
 
                     <Button
                         android:id="@+id/buttons15"
                         style="?android:attr/borderlessButtonStyle"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_marginBottom="5dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_marginTop="5dp"
+                        android:layout_margin="4dp"
                         android:layout_weight="1"
                         android:background="@drawable/default_button_image"
                         android:text="WAVE"
-                        android:textColor="#e0ca64" />
+                        android:textColor="#e0ca64"
+                        android:textSize="14sp" />
                 </TableRow>
 
                 <TableRow
                     android:id="@+id/tableRow2P"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
                     android:layout_weight="1"
                     android:baselineAligned="false" >
 
@@ -545,50 +597,42 @@
                         style="?android:attr/borderlessButtonStyle"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_marginBottom="5dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_marginTop="5dp"
+                        android:layout_margin="4dp"
                         android:layout_weight="1"
                         android:background="@drawable/default_button_image"
                         android:text="SMIRK WAVE"
-                        android:textColor="#e0ca64" />
+                        android:textColor="#e0ca64"
+                        android:textSize="14sp" />
 
                     <Button
                         android:id="@+id/buttons17"
                         style="?android:attr/borderlessButtonStyle"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_marginBottom="5dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_marginTop="5dp"
+                        android:layout_margin="4dp"
                         android:layout_weight="1"
                         android:background="@drawable/default_button_image"
                         android:text="OPEN WAVE"
-                        android:textColor="#e0ca64" />
+                        android:textColor="#e0ca64"
+                        android:textSize="14sp" />
 
                     <Button
                         android:id="@+id/buttons18"
                         style="?android:attr/borderlessButtonStyle"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_marginBottom="5dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_marginTop="5dp"
+                        android:layout_margin="4dp"
                         android:layout_weight="1"
                         android:background="@drawable/default_button_image"
                         android:text="ANTS MARCH"
-                        android:textColor="#e0ca64" />
+                        android:textColor="#e0ca64"
+                        android:textSize="14sp" />
                 </TableRow>
 
                 <TableRow
                     android:id="@+id/tableRow3P"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
                     android:layout_weight="1"
                     android:baselineAligned="false" >
 
@@ -597,50 +641,42 @@
                         style="?android:attr/borderlessButtonStyle"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_marginBottom="5dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_marginTop="5dp"
+                        android:layout_margin="4dp"
                         android:layout_weight="1"
                         android:background="@drawable/default_button_image"
                         android:text="FAINT"
-                        android:textColor="#e0ca64" />
+                        android:textColor="#e0ca64"
+                        android:textSize="14sp" />
 
                     <Button
                         android:id="@+id/buttons20"
                         style="?android:attr/borderlessButtonStyle"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_marginBottom="5dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_marginTop="5dp"
+                        android:layout_margin="4dp"
                         android:layout_weight="1"
                         android:background="@drawable/default_button_image"
                         android:text="RYTHMIC"
-                        android:textColor="#e0ca64" />
+                        android:textColor="#e0ca64"
+                        android:textSize="14sp" />
 
                     <Button
                         android:id="@+id/buttons21"
                         style="?android:attr/borderlessButtonStyle"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_marginBottom="5dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_marginTop="5dp"
+                        android:layout_margin="4dp"
                         android:layout_weight="1"
                         android:background="@drawable/default_button_image"
                         android:text="CLOSE ALL"
-                        android:textColor="#e0ca64" />
+                        android:textColor="#e0ca64"
+                        android:textSize="14sp" />
                 </TableRow>
 
                 <TableRow
                     android:id="@+id/tableRow4P"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
                     android:layout_weight="1"
                     android:baselineAligned="false" >
 
@@ -649,45 +685,51 @@
                         style="?android:attr/borderlessButtonStyle"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_marginBottom="5dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_marginTop="5dp"
+                        android:layout_margin="4dp"
                         android:layout_weight="1"
                         android:background="@drawable/default_button_image"
                         android:text="&lt; &lt;"
-                        android:textColor="#00ff00" />
+                        android:textColor="#00ff00"
+                        android:textSize="14sp" />
 
                     <Button
                         android:id="@+id/buttons23"
                         style="?android:attr/borderlessButtonStyle"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_marginBottom="5dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_marginTop="5dp"
+                        android:layout_margin="4dp"
                         android:layout_weight="1"
                         android:background="@drawable/default_button_image"
                         android:text="OPEN TOP"
-                        android:textColor="#e0ca64" />
+                        android:textColor="#e0ca64"
+                        android:textSize="14sp" />
 
                     <Button
                         android:id="@+id/buttons24"
                         style="?android:attr/borderlessButtonStyle"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_marginBottom="5dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_marginTop="5dp"
+                        android:layout_margin="4dp"
                         android:layout_weight="1"
                         android:background="@drawable/default_button_image"
                         android:text="OPEN BOTTOM"
-                        android:textColor="#e0ca64" />
+                        android:textColor="#e0ca64"
+                        android:textSize="14sp" />
                 </TableRow>
             </TableLayout>
         </androidx.viewpager.widget.ViewPager>
-    </views.SoundViewGroup>
+
+        <!-- Bottom Status Line -->
+        <TextView
+            android:id="@+id/dome_status_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="Tap dome panels to select + OPEN/CLOSE/TOGGLE, or tap a Panel Control button"
+            android:textColor="#a0a0a0"
+            android:textSize="12sp" />
+    </LinearLayout>
 
 </LinearLayout>

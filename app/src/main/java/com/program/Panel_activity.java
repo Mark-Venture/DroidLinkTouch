@@ -106,16 +106,22 @@ public class Panel_activity extends Activity
     	Button btn24 = (Button) findViewById(R.id.buttons24);
     	btn24.setText(prefs.getString("pk22_name", "CloseD"));
         
-    	ImageButton btnnone = (ImageButton) findViewById(R.id.button_non);
+    	Button btnnone = (Button) findViewById(R.id.button_non);
     	Button btnbottom = (Button) findViewById(R.id.button_but);
     	Button btntop = (Button) findViewById(R.id.button_top);
     	Button btnall = (Button) findViewById(R.id.button_all);
-    	
+    	final Button btnSync = (Button) findViewById(R.id.button_sync_dl);
+    	Button btnSelOpen = (Button) findViewById(R.id.button_sel_open);
+    	Button btnSelClose = (Button) findViewById(R.id.button_sel_close);
+    	Button btnSelToggle = (Button) findViewById(R.id.button_sel_toggle);
+    	Button btnMasterOpen = (Button) findViewById(R.id.button_master_open);
+    	Button btnMasterClose = (Button) findViewById(R.id.button_master_close);
+    	final TextView statusText = (TextView) findViewById(R.id.dome_status_text);
     	
     	TextView line1 = (TextView) findViewById (R.id.textView1);
         TextView line2 = (TextView) findViewById (R.id.textView1P);
         TextView line3 = (TextView) findViewById (R.id.textView1P2);
-        ImageButton butsoundoff = (ImageButton) findViewById (R.id.button_non);
+        Button butsoundoff = (Button) findViewById (R.id.button_non);
         Button butless = (Button) findViewById (R.id.button_but);
         Button butmid = (Button) findViewById (R.id.button_top);
         Button butmore = (Button) findViewById (R.id.button_all);
@@ -144,111 +150,7 @@ public class Panel_activity extends Activity
         Button but23 = (Button) findViewById (R.id.buttons23);
         Button but24 = (Button) findViewById (R.id.buttons24);
         
-        if (dontuseCustom == true) {
-        	if (screenSizeX <= 480)
-        	{
-        		line1.setTextSize(12);
-        		line2.setTextSize(12);
-        		line3.setTextSize(12);
-        		butless.setTextSize(10);
-        		butmid.setTextSize(10);
-        		butmore.setTextSize(10);
-        		but1.setTextSize(10);
-        		but2.setTextSize(10);
-        		but3.setTextSize(10);
-        		but4.setTextSize(10);
-        		but5.setTextSize(10);
-        		but6.setTextSize(10);
-        		but7.setTextSize(10);
-        		but8.setTextSize(10);
-        		but9.setTextSize(10);
-        		but10.setTextSize(10);
-        		but11.setTextSize(10);
-        		but12.setTextSize(10);
-        		but13.setTextSize(10);
-        		but14.setTextSize(10);
-        		but15.setTextSize(10);
-        		but16.setTextSize(10);
-        		but17.setTextSize(10);
-        		but18.setTextSize(10);
-        		but19.setTextSize(10);
-        		but20.setTextSize(10);
-        		but21.setTextSize(10);
-        		but22.setTextSize(10);
-        		but23.setTextSize(10);
-        		but24.setTextSize(10);
-        	}
-        	else if (screenSizeX <= 720)
-        	{
-        		line1.setTextSize(24);
-        		line2.setTextSize(24);
-        		line3.setTextSize(24);
-        		butless.setTextSize(18);
-        		butmid.setTextSize(18);
-        		butmore.setTextSize(18);
-        		but1.setTextSize(18);
-        		but2.setTextSize(18);
-        		but3.setTextSize(18);
-        		but4.setTextSize(18);
-        		but5.setTextSize(18);
-        		but6.setTextSize(18);
-        		but7.setTextSize(18);
-        		but8.setTextSize(18);
-        		but9.setTextSize(18);
-        		but10.setTextSize(18);
-        		but11.setTextSize(18);
-        		but12.setTextSize(18);
-        		but13.setTextSize(18);
-        		but14.setTextSize(18);
-        		but15.setTextSize(18);
-        		but16.setTextSize(18);
-        		but17.setTextSize(18);
-        		but18.setTextSize(18);
-        		but19.setTextSize(18);
-        		but20.setTextSize(18);
-        		but21.setTextSize(18);
-        		but22.setTextSize(18);
-        		but23.setTextSize(18);
-        		but24.setTextSize(18);
-        	}
-        	else if (screenSizeX <= 1080)
-        	{
-        		line1.setTextSize(26);
-        		line2.setTextSize(36);
-        		line3.setTextSize(36);
-        		butless.setTextSize(18);
-        		butmid.setTextSize(18);
-        		butmore.setTextSize(18);
-        		but1.setTextSize(18);
-        		but2.setTextSize(18);
-        		but3.setTextSize(18);
-        		but4.setTextSize(18);
-        		but5.setTextSize(18);
-        		but6.setTextSize(18);
-        		but7.setTextSize(18);
-        		but8.setTextSize(18);
-        		but9.setTextSize(18);
-        		but10.setTextSize(18);
-        		but11.setTextSize(18);
-        		but12.setTextSize(18);
-        		but13.setTextSize(18);
-        		but14.setTextSize(18);
-        		but15.setTextSize(18);
-        		but16.setTextSize(18);
-        		but17.setTextSize(18);
-        		but18.setTextSize(18);
-        		but19.setTextSize(18);
-        		but20.setTextSize(18);
-        		but21.setTextSize(18);
-        		but22.setTextSize(18);
-        		but23.setTextSize(18);
-        		but24.setTextSize(18);
-        	}
-        	else
-        	{
-        	}
-        }
-        else {
+        if (!dontuseCustom) {
         	line1.setTextSize(labelTSize);
     		line2.setTextSize(labelTSize);
     		line3.setTextSize(labelTSize);
@@ -279,6 +181,92 @@ public class Panel_activity extends Activity
     		but22.setTextSize(buttonTSize);
     		but23.setTextSize(buttonTSize);
     		but24.setTextSize(buttonTSize);
+        }
+
+        if (btnSelOpen != null) {
+            btnSelOpen.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    executePanelActionMode('O', prefs, ste);
+                }
+            });
+        }
+        if (btnSelClose != null) {
+            btnSelClose.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    executePanelActionMode('C', prefs, ste);
+                }
+            });
+        }
+        if (btnSelToggle != null) {
+            btnSelToggle.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    executePanelActionMode('T', prefs, ste);
+                }
+            });
+        }
+        if (btnMasterOpen != null) {
+            btnMasterOpen.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    executeAllDomePanels('O', prefs, ste);
+                }
+            });
+        }
+        if (btnMasterClose != null) {
+            btnMasterClose.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    executeAllDomePanels('C', prefs, ste);
+                }
+            });
+        }
+        if (btnSync != null) {
+            btnSync.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    final String ip = prefs.getString("prefUserAddress", "192.168.4.1");
+                    btnSync.setEnabled(false);
+                    btnSync.setText("SYNC...");
+                    if (statusText != null) {
+                        statusText.setText("Connecting to http://" + ip + "/load ...");
+                    }
+                    DroidLinkSync.syncFromDevice(Panel_activity.this, ip, new DroidLinkSync.SyncCallback() {
+                        @Override
+                        public void onSuccess(final String summary) {
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    btnSync.setEnabled(true);
+                                    btnSync.setText("SYNC");
+                                    if (statusText != null) {
+                                        statusText.setText("Sync successful! Dome labels updated.");
+                                    }
+                                    Toast.makeText(Panel_activity.this, "Synced with DroidLink: " + summary, Toast.LENGTH_LONG).show();
+                                    recreate();
+                                }
+                            });
+                        }
+
+                        @Override
+                        public void onError(final String errorMessage) {
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    btnSync.setEnabled(true);
+                                    btnSync.setText("SYNC");
+                                    if (statusText != null) {
+                                        statusText.setText("Sync failed: " + errorMessage);
+                                    }
+                                    Toast.makeText(Panel_activity.this, "Sync failed: " + errorMessage, Toast.LENGTH_LONG).show();
+                                }
+                            });
+                        }
+                    });
+                }
+            });
         }
     	
     	btn1.setOnClickListener(new View.OnClickListener() {
@@ -961,6 +949,25 @@ public class WizardPagerAdapter extends PagerAdapter {
 }
 
 	private void executePanelAction(String send, boolean isOpen, SharedPreferences prefs, final string_parser ste) {
+		executePanelActionMode(isOpen ? 'O' : 'C', prefs, ste);
+	}
+
+	private String getDomePanelCmd(int panelNum, char mode, SharedPreferences prefs) {
+		String slotStr = String.format("%02d", panelNum - 1);
+		if (mode == 'T') {
+			return ":DS" + slotStr + "T";
+		}
+		boolean isOpen = (mode == 'O');
+		String key = isOpen ? ("dp" + panelNum + "_open") : ("dp" + panelNum + "_close");
+		String defaultCmd = isOpen ? (":DS" + slotStr + "O") : (":DS" + slotStr + "C");
+		String cmd = prefs.getString(key, defaultCmd);
+		if (cmd == null || cmd.trim().isEmpty() || (!cmd.endsWith("O") && !cmd.endsWith("C") && !cmd.startsWith(":OP") && !cmd.startsWith(":CL"))) {
+			cmd = defaultCmd;
+		}
+		return cmd.trim();
+	}
+
+	private void executePanelActionMode(char mode, SharedPreferences prefs, final string_parser ste) {
 		int selectedCount = 0;
 		List<String> commands = new ArrayList<>();
 		StringBuilder panelNames = new StringBuilder();
@@ -984,15 +991,9 @@ public class WizardPagerAdapter extends PagerAdapter {
 
 			if (isSelected) {
 				selectedCount++;
-				String key = isOpen ? ("dp" + i + "_open") : ("dp" + i + "_close");
-				String slotStr = String.format("%02d", i - 1);
-				String defaultCmd = isOpen ? (":DS" + slotStr + "O") : (":DS" + slotStr + "C");
-				String cmd = prefs.getString(key, defaultCmd);
-				if (cmd == null || cmd.trim().isEmpty() || (!cmd.endsWith("O") && !cmd.endsWith("C") && !cmd.startsWith(":OP") && !cmd.startsWith(":CL"))) {
-					cmd = defaultCmd;
-				}
-				if (cmd != null && !cmd.trim().isEmpty()) {
-					commands.add(cmd.trim());
+				String cmd = getDomePanelCmd(i, mode, prefs);
+				if (cmd != null && !cmd.isEmpty()) {
+					commands.add(cmd);
 					if (panelNames.length() > 0) panelNames.append(", ");
 					panelNames.append("P").append(i);
 				}
@@ -1004,6 +1005,18 @@ public class WizardPagerAdapter extends PagerAdapter {
 			return;
 		}
 
+		sendChainedDomeCommands(commands, mode, panelNames.toString(), ste);
+	}
+
+	private void executeAllDomePanels(char mode, SharedPreferences prefs, final string_parser ste) {
+		List<String> commands = new ArrayList<>();
+		for (int i = 1; i <= 12; i++) {
+			commands.add(getDomePanelCmd(i, mode, prefs));
+		}
+		sendChainedDomeCommands(commands, mode, "All Dome Panels (1-12)", ste);
+	}
+
+	private void sendChainedDomeCommands(List<String> commands, char mode, String labelSummary, final string_parser ste) {
 		// Group commands into chunks of at most 6 per line with no spaces or commas
 		List<String> chunks = new ArrayList<>();
 		StringBuilder currentChunk = new StringBuilder();
@@ -1022,7 +1035,6 @@ public class WizardPagerAdapter extends PagerAdapter {
 			chunks.add(currentChunk.toString());
 		}
 
-		// Send chunks on background thread to prevent blocking UI
 		final List<String> chunksToSend = chunks;
 		new Thread(new Runnable() {
 			@Override
@@ -1038,12 +1050,16 @@ public class WizardPagerAdapter extends PagerAdapter {
 			}
 		}).start();
 
-		String verb = isOpen ? "Opened" : "Closed";
+		String verb = (mode == 'O') ? "Opened" : (mode == 'C' ? "Closed" : "Toggled");
 		StringBuilder fullSent = new StringBuilder();
 		for (String c : chunks) {
 			fullSent.append(c);
 		}
-		Toast.makeText(this, verb + " " + panelNames + " (" + fullSent + ")", Toast.LENGTH_SHORT).show();
+		TextView statusText = (TextView) findViewById(R.id.dome_status_text);
+		if (statusText != null) {
+			statusText.setText(verb + " " + labelSummary + ": " + fullSent.toString());
+		}
+		Toast.makeText(this, verb + " " + labelSummary + " (" + fullSent + ")", Toast.LENGTH_SHORT).show();
 	}
 
 }
